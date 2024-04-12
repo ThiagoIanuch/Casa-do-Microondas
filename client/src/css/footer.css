@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap')
+
+h1{
+
+}
+* {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+main{
+    height: 80vh;
+}
+footer {
+    width: 100%;
+    color: #d6d2d2;
+}
+#footer_content {
+    background-color: #171717;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 3rem 3.5rem;
+}
+#footer_contacts h1{
+    margin-bottom: 0.75rem;
+}
+#footer_contacts p{
+    color: white;
+}
+#footer_numbers {
+    display: grid;
+    gap: 0.50rem;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    list-style: none;
+}
+#footer_numbers .footer_link {
+    height:  2.5rem;
+    width: 2.5rem;
+    text-decoration: none;
+}
+#footer_numbers .footer_link i{
+    font-size: 1.25rem;
+}
+#telephone{
+    color: blue;
+}
+#whatsapp{
+    color: green;
+}
+.footer-list{
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    list-style: none;
+}
+.footer-list .footer_link{
+    color: #d6d2d2;
+    transition: all 0.4s;
+    text-decoration: none;
+}
+.footer-list .footer_link:hover{
+    color: #7f37c9;
+}
+.footer_booton{
+    background-color: darkgoldenrod;
+    color: white;
+    display:block; position:relative; float:left;
+    margin:20px;
+    width:200px;                             
+    line-height:50px;                        
+    text-align:center;
+    border-radius: 4px 4px 4px 4px;
+    text-decoration: none;
+    transition: 0.4s;
+}
+.footer_booton:hover{
+    opacity: 0.8;
+}
+#footer_copyright{
+    display: flex;
+    justify-content: center;
+    background-color: #0e0c0c;
+    font-size: 0.9rem;
+    padding: 1.5rem;
+    font-weight: 100;
+}

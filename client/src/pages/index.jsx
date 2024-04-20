@@ -1,9 +1,16 @@
-function Index() {
-    return (
-        <>
 
-        </>
-    )
-}
 
-export default Index
+
+    import Announcements from '../components/announcements.jsx'
+
+
+    function Index() {
+        return (
+            <>
+                <Announcements></Announcements>
+
+            </>
+        )
+    }
+
+    export default Index

@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.header-container {
+    width: 100%;
+    height: 75px;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 30px;
+}
+
+.header-bg {
+    background-color: white;
+}
+
+.logo {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.logo img {
+    height: 55px;
+}
+
+.nav-container {
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.menu-links {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.menu-link {
+    position: relative;
+    height: 100%;
+    line-height: 75px;
+}
+
+.menu-link a {
+    padding: 30px 20px;
+    text-decoration: none;
+}
+
+.white-link, .white-link a {
+    color: white;
+}
+
+.black-link, .black-link a {
+    color: black;
+}
+
+.menu-link a:hover {
+    color: orange;
+}
+
+.menu-links > .menu-link > a::after {
+    content: '';
+    width: 0;
+    position: absolute;
+    bottom: 25px;
+    left: 10%;
+    transition: width 0.5s ease;
+}
+
+.menu-links > .menu-link:hover > a::after {
+    width: 80%;
+    border: 1px solid orange;
+}
+
+.sub-menu-links {
+    width: 300px;
+    display: none;
+    position: absolute;
+    background-color: white;
+    list-style-type: none;
+    border-left: 3px solid orange;
+    white-space: nowrap;
+}
+
+.sub-menu-link {
+    padding: 10px;
+    line-height: normal!important;
+}
+
+.sub-menu-links .sub-menu-link {
+    border: 1px solid #eee;
+}
+
+.sub-menu-link a {
+    color: black;
+    padding: 0;
+}
+
+.menu-link:hover .sub-menu-links {
+    display: block;
+}
+
+.login-container {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.login-link {
+    width: 75px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid orange;
+    border-radius: 3px;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.login-link:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+/* 消してください */
+.video-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    z-index: -100;
+    overflow: hidden;
+
+}
+
+.video-background {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* */

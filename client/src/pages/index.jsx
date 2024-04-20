@@ -1,11 +1,14 @@
-import Menu from '../components/menu.jsx'
+    import Announcements from '../components/announcements.jsx'
 
-function Index() {
-    return (
-        <>
-            <Menu></Menu>
-        </>
-    )
-}
 
-export default Index
+    function Index() {
+        return (
+            <>
+                <Menu></Menu>
+                <Announcements></Announcements>
+
+            </>
+        )
+    }
+
+    export default Index

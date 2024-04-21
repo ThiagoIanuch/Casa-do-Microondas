@@ -5,7 +5,7 @@ import './css/global.css'
 function App() {
 
   return (
-    <div class="App">
+    <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index/>}></Route>

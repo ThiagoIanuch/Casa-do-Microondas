@@ -1,13 +1,15 @@
 import '../css/services.css'
+import { Icon } from '@iconify/react';
 
-function Services() {
+function Services() {   
     return (
+        
         <div className="services-container">
             <h2>Nossos serviços</h2>
             <div className="services-grid">
                 <div className="service-item">
                     <div className="service-icon">
-                        1
+                        <Icon icon="material-symbols-light:microwave-outline-rounded" />
                     </div>
                     <div className="service-name">
                         <h4>Conserto de microondas</h4>
@@ -23,7 +25,7 @@ function Services() {
 
                 <div className="service-item">
                     <div className="service-icon">
-                        2
+                        <Icon icon="ph:oven-light" />      
                     </div>
                     <div className="service-name">
                         <h4>Conserto de forno elétrico</h4>
@@ -38,7 +40,7 @@ function Services() {
 
                 <div className="service-item">
                     <div className="service-icon">
-                        3
+                        <Icon icon="material-symbols-light:build-outline" />
                     </div>
                     <div className="service-name">
                         <h4>Reforma de microondas</h4>
@@ -56,13 +58,13 @@ function Services() {
 
                 <div className="service-item">
                     <div className="service-icon">
-                        4
+                        <Icon icon="ion:cart-outline" />
                     </div>
                     <div className="service-name">
                         <h4>Microondas novos e usados</h4>
                     </div>
                     <div className="service-description">
-                        <p>Temos microondas a pronta entrega de diversas marcas e modelos direto dafábrica. 127V e 220V.</p>
+                        <p>Temos microondas a pronta entrega de diversas marcas e modelos direto da fábrica. 127V e 220V.</p>
                     </div>
                     <div className="services-link">
                         <a href="#"><button className="service-button">Saiba mais</button></a>
@@ -71,7 +73,7 @@ function Services() {
 
                 <div className="service-item">
                     <div className="service-icon">
-                        5
+                        <Icon icon="ion:cart-outline" />
                     </div>
                     <div className="service-name">
                         <h4>Acessórios originais</h4>
@@ -86,7 +88,7 @@ function Services() {
 
                 <div className="service-item">
                     <div className="service-icon">
-                        6
+                        <Icon icon="circum:delivery-truck" />
                     </div>
                     <div className="service-name">
                         <h4>Serviço de busca e entrega</h4>

@@ -23,7 +23,7 @@ function Hero() {
                 </div>
             </div>
 
-            <div ref={scrollRef}></div>
+            <div className="scroll" ref={scrollRef}></div>
         </div>
     )
 }

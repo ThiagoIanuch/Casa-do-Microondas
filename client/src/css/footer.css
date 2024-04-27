@@ -3,23 +3,28 @@
 main{
     height: 80vh;
 }
+
 footer {
     width: 100%;
     color: #d6d2d2;
 }
-#footer_content {
+
+#footer-content {
     background-color: #171717;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     padding: 3rem 3.5rem;
 }
-#footer_contacts h1{
+
+#footer-contacts h1{
     margin-bottom: 0.75rem;
 }
-#footer_contacts p{
+
+#footer-contacts p{
     color: white;
 }
-#footer_numbers {
+
+#footer-numbers {
     display: flex;
     flex-direction: column;
     gap: 0.50rem;
@@ -27,39 +32,48 @@ footer {
     margin-top: 1.5rem;
     list-style: none;
 }
-#footer_numbers .footer_link {
+
+#footer-numbers .footer-link {
     display: flex;
     align-items: center;
     text-decoration: none;
 }
-#footer_numbers .footer_link i{
+
+#footer-numbers .footer-link i{
     font-size: 1.25rem;
     margin-right: 0.5rem;
 }
-#footer_numbers .footer_link p{
+
+#footer-numbers .footer-link p{
     white-space: nowrap;
 }
+
 #telephone{
     color: blue;
 }
+
 #whatsapp{
     color: green;
 }
+
 .footer-list{
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
     list-style: none;
 }
-.footer-list .footer_link{
+
+.footer-list .footer-link{
     color: #d6d2d2;
     transition: all 0.4s;
     text-decoration: none;
 }
-.footer-list .footer_link:hover{
+
+.footer-list .footer-link:hover{
     color: #7f37c9;
 }
-.footer_booton{
+
+.footer-booton{
     background-color: darkgoldenrod;
     color: white;
     display:block; position:relative; float:left;
@@ -71,10 +85,12 @@ footer {
     text-decoration: none;
     transition: 0.4s;
 }
-.footer_booton:hover{
+
+.footer-booton:hover{
     opacity: 0.8;
 }
-#footer_copyright{
+
+#footer-copyright{
     display: flex;
     justify-content: center;
     background-color: #0e0c0c;

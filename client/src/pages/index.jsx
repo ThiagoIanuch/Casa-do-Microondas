@@ -3,7 +3,7 @@ import Hero from '../components/hero.jsx'
 import Announcements from '../components/announcements.jsx'
 
 import Services from '../components/services.jsx'
-
+import Footer from '../components/footer.jsx'
 
 function Index() {
     return (
@@ -13,7 +13,7 @@ function Index() {
             <Announcements></Announcements>
 
             <Services></Services>
-
+            <Footer></Footer>
         </>
     )
 }

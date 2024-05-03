@@ -15,15 +15,15 @@ function Announcements() {
           <input type="radio" name="botao" id="b3"></input>
 
                 <div className="slide primeira"> 
-                    <img src="dall-e-2.webp" alt="imagem 1" />
+                    <img src="ia-micoondas.jpg" alt="imagem 1" />
                 </div>
 
                 <div className="slide"> 
-                    <img src="c:\Users\HP\Pictures\Saved Pictures\ia-micoondas.jpg" alt="imagem 2" />
+                    <img src="ia-micoondas2.jpg" alt="imagem 2" />
                 </div>
 
                 <div className="slide"> 
-                    <img src="c:\Users\HP\Pictures\Saved Pictures\ia-micoondas3.jpg" alt="imagem 3" />
+                    <img src="ia-micoondas3.jpg" alt="imagem 3" />
                 </div>
 
                 <div className="navigation-auto">
@@ -36,9 +36,9 @@ function Announcements() {
         </div>
 
                 <div className="navigation-manual">
-                    <label for="b1" class="manual-btn"></label>
-                    <label for="b2" class="manual-btn"></label>
-                    <label for="b3" class="manual-btn"></label>
+                    <label for="b1" className="manual-btn"></label>
+                    <label for="b2" className="manual-btn"></label>
+                    <label for="b3" className="manual-btn"></label>
                 </div>
 
       </div>

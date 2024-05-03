@@ -36,9 +36,9 @@ function Announcements() {
         </div>
 
                 <div className="navigation-manual">
-                    <label for="b1" className="manual-btn"></label>
-                    <label for="b2" className="manual-btn"></label>
-                    <label for="b3" className="manual-btn"></label>
+                    <label For="b1" className="manual-btn"></label>
+                    <label For="b2" className="manual-btn"></label>
+                    <label For="b3" className="manual-btn"></label>
                 </div>
 
       </div>

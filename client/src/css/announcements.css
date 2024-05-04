@@ -97,3 +97,6 @@
       background-color: white;
   }
   
+  #b1:checked ~ #b1{
+    background-color: white;
+  }

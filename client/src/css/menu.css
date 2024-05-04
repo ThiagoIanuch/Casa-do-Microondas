@@ -1,17 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
 .header-container {
     width: 100%;
     height: 75px;
+    background-color: var(--color-background);
     position: fixed;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: 0 30px;
+    border-bottom: 1px solid var(--color-border);
+    padding: 0 80px;
+    z-index: 999;
 }
 
-.header-bg {
-    background-color: white;
+.bg-hero {
+    background-color: transparent;
+    border: none;
 }
 
 .logo {
@@ -26,13 +28,23 @@
     height: 55px;
 }
 
+.logo {
+    filter: var(--color-logo);
+}
+
+.filter-hero {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(33deg) brightness(110%) contrast(101%);
+}
+
 .nav-container {
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
     font-family: 'Montserrat';
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .menu-links {
@@ -49,24 +61,26 @@
 }
 
 .menu-link a {
+    color: var(--color-font);
     padding: 30px 20px;
     text-decoration: none;
 }
 
-.white-link, .white-link a {
+.color-hero a {
     color: white;
 }
 
-.black-link, .black-link a {
-    color: black;
+.color-hero {
+    color: white!important;
 }
 
 .menu-link a:hover {
-    color: orange;
+    color: var(--color-orange);
 }
 
 .menu-links > .menu-link > a::after {
     content: '';
+    color: var(--color-orange);
     width: 0;
     position: absolute;
     bottom: 25px;
@@ -76,16 +90,16 @@
 
 .menu-links > .menu-link:hover > a::after {
     width: 80%;
-    border: 1px solid orange;
+    border: 1px solid;
 }
 
 .sub-menu-links {
     width: 300px;
     display: none;
     position: absolute;
-    background-color: white;
+    background-color: var(--color-background);
     list-style-type: none;
-    border-left: 3px solid orange;
+    border-left: 3px solid var(--color-orange);
     white-space: nowrap;
 }
 
@@ -95,16 +109,27 @@
 }
 
 .sub-menu-links .sub-menu-link {
-    border: 1px solid #eee;
+    border: 1px solid var(--color-border);
 }
 
 .sub-menu-link a {
-    color: black;
+    color: var(--color-font);
     padding: 0;
 }
 
 .menu-link:hover .sub-menu-links {
     display: block;
+}
+
+.search-icon {
+    color: var(--color-font);
+    font-size: 24px;
+    line-height: 83px;
+    margin-left: 15px;
+}
+
+.search-icon:hover {
+    cursor: pointer;
 }
 
 .login-container {
@@ -118,34 +143,37 @@
 .login-link {
     width: 75px;
     height: 30px;
+    color: var(--color-font);
     background-color: transparent;
-    border: 1px solid orange;
+    border: 1px solid var(--color-orange);
     border-radius: 3px;
     font-family: 'Montserrat';
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .login-link:hover {
-    background-color: #eee;
+    color: white;
+    background-color: var(--color-orange);
     cursor: pointer;
 }
 
-/* 消してください */
-.video-container {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    z-index: -100;
-    overflow: hidden;
+/* Adicionar responsabilidade */
+@media screen and (max-width: 850px) {
+    .header-container, .menu-links {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: black;
+        flex-direction: column;
+    }
 
+    .logo {
+        width: 100%;
+        justify-content: center;
+    }
+    .nav-container, .login-link {
+        display: none;
+    }
 }
-
-.video-background {
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-/* */

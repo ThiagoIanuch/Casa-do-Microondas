@@ -4,8 +4,11 @@ import './css/global.css'
 
 function App() {
 
+  const root = document.documentElement;
+  root.classList.add('dark-theme');
+  
   return (
-    <div class="App">
+    <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index/>}></Route>

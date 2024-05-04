@@ -1,5 +1,6 @@
 import '../css/menu.css'
 import { useState } from 'react'
+import { Icon } from '@iconify/react';
 
 function Menu() {
     const [color, setColor] = useState(false)
@@ -16,31 +17,30 @@ function Menu() {
     window.addEventListener('scroll', changeColor)
 
     return (
-        <header className={color ? "header-container header-bg" : "header-container"}>
-            <div class="logo">
-                <img src="logo.png"></img>
+        <header className={color ? "header-container" : "header-container bg-hero"}>
+            <div className={color ? "logo" : "logo filter-hero"}>
+                <a href="#"><img src="logo.png"></img></a>
             </div>
             <nav className="nav-container">
                 <ul className="menu-links">
-                    <li className={color ? "menu-link black-link" : "menu-link white-link"}><a href="#">Home</a></li>
-                    <li className={color ? "menu-link black-link" : "menu-link white-link"}>
+                    <li className={color ? "menu-link" : "menu-link color-hero"}><a href="#">Home</a></li>
+                    <li className={color ? "menu-link" : "menu-link color-hero"}>
                         <a href="#">Serviços</a>
                         <ul className="sub-menu-links">
-                            <li className="sub-menu-link"><a href="#">Reparo de microondas</a></li>
-                            <li className="sub-menu-link"><a href="#">Reparo de forno elétrico</a></li>
+                            <li className="sub-menu-link"><a href="#">Conserto de microondas</a></li>
+                            <li className="sub-menu-link"><a href="#">Conserto de forno elétrico</a></li>
                             <li className="sub-menu-link"><a href="#">Reforma de microondas</a></li>
                             <li className="sub-menu-link"><a href="#">Busca e entrega</a></li>
                         </ul>
                     </li>
-                    <li className={color ? "menu-link black-link" : "menu-link white-link"}>
+                    <li className={color ? "menu-link" : "menu-link color-hero"}>
                         <a href="#">Comprar</a>
                         <ul className="sub-menu-links">
                             <li className="sub-menu-link"><a href="#">Acessórios</a></li>
-                            <li className="sub-menu-link"><a href="#">Microondas usados</a></li>
-                            <li className="sub-menu-link"><a href="#">Microondas novos</a></li>
+                            <li className="sub-menu-link"><a href="#">Microondas novos e usados</a></li>
                         </ul>
                     </li>
-                    <li className={color ? "menu-link black-link" : "menu-link white-link"}>
+                    <li className={color ? "menu-link" : "menu-link color-hero"}>
                         <a href="#">Mais informações</a>
                         <ul className="sub-menu-links">
                             <li className="sub-menu-link"><a href="#">Localização</a></li>
@@ -48,12 +48,15 @@ function Menu() {
                             <li className="sub-menu-link"><a href="#">Avaliação na hora</a></li>
                         </ul>
                     </li>
-                    <li className={color ? "menu-link black-link" : "menu-link white-link"}><a href="#">Contato</a></li>
+                    <li className={color ? "menu-link" : "menu-link color-hero"}><a href="#">Contato</a></li>
                 </ul>
+                <div className={color ? "search-icon" : "search-icon color-hero"}>
+                    <Icon icon="ic:baseline-search" />
+                </div>
             </nav>
 
             <div className="login-container">
-                <button className={color ? "login-link black-link" : "login-link white-link"}>Entrar</button>
+                <button className={color ? "login-link" : "login-link color-hero"}>Entrar</button>
             </div>
         </header>
     )

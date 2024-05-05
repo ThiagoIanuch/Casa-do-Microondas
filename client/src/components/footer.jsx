@@ -1,73 +1,101 @@
+import { useState, useEffect } from 'react';
 import '../css/footer.css'
+import { Icon } from '@iconify/react';
 
 function Footer() {
+    
+    const changeTheme = (selectedTheme) => {
+        if(selectedTheme === 'dark-theme') {
+            document.documentElement.classList.add('dark-theme');
+        } else {
+            document.documentElement.classList.remove('dark-theme');
+        }
+
+        localStorage.setItem('theme', selectedTheme);
+    }
+
+    const storedTheme = localStorage.getItem('theme');
+    changeTheme(storedTheme);
+
     return(
-        <footer>
+        <footer className="footer-container">
             <div id="footer-content">
                 <div id="footer-contacts">
-                    <h1>Fale conosco</h1>
+                    <h3>Fale conosco</h3>
                     <div id="footer-numbers">
                         <a href="#" className="footer-link" id="telephone">
-                            <i className="fa-solid fa-phone"></i>
-                            (41)3332-8000
+                            <Icon icon="iconamoon:phone-fill" className="footer-icon"/>                            
+                            <p>(41) 3332-8000</p>
                         </a>
                         <a href="#" className="footer-link" id="whatsapp">
-                            <i className="fa-brands fa-whatsapp"></i>
-                            (41)98516-3600
+                            <Icon icon="ic:baseline-whatsapp" className="footer-icon"/>
+                            <p>(41) 98516-3600</p>
                         </a>
                         <a href="#" className="footer-link" id="whatsapp">
-                            <i className="fa-brands fa-whatsapp"></i>
-                            (41)98516-3602
+                            <Icon icon="ic:baseline-whatsapp" className="footer-icon"/>
+                            <p>(41) 98516-3602</p>
                         </a>
                     </div>
                 </div>
-                <ul className="footer-list">
-                    <li>
-                        <h3>Onde estamos</h3>
-                    </li>
-                    <li>
-                        <a href="#" className="footer-link">Loja 1 - Avenida Presidente Kennedy 410, rebouças - Curitiba</a>
-                    </li>
-                    <li>
-                        <a href="#" className="footer-link">Loja 2 - Rua Saturnino Miranda, 84 - Santa Felicidade - Curitiba</a>
-                    </li>
-                </ul>
-                <ul className="footer-list">
-                    <li>
-                        <h3>Peça ja seu orçamento</h3>
-                    </li>
-                    <li>
-                        <a>contate-nos! Buscamos e entregamos seu aparelho </a>
-                    </li>
-                    <li>
-                        <a>Devido a pandemia do COVID-19 estamos atendendo das 8:30 as 17:30 e a avaliação na hora é feita até as 16h</a>
-                    </li>
-                    <li>
-                        <a href="#" className="footer-link">
-                            Entre em contato
-                        </a>
-                    </li>
-                </ul>
-                <ul className="footer-list">
-                    <li>
-                        <h3>Tema</h3>
-                    </li>
-                    <li>
-                        <a href="#" className="footer-link">
-                            <i className="fa-regular fa-sun"></i> Tema claro
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="footer-link">
-                            <i className="fa-regular fa-moon"></i> Tema escuro
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="footer-link">
-                            <i className="fa-solid fa-desktop"></i> Tema do sitema
-                        </a>
-                    </li>
-                </ul>
+                <div className="footer-shops">
+                    <ul className="footer-list">
+                        <li>
+                            <h3>Onde estamos</h3>
+                        </li>
+                        <li>
+                            <a href="/localization" className="footer-link">Loja 1 - Avenida Presidente Kennedy 410, Rebouças - Curitiba</a>
+                        </li>
+                        <li>
+                            <a href="/localization" className="footer-link">Loja 2 - Rua Saturnino Miranda, 84 - Santa Felicidade - Curitiba</a>
+                        </li>
+                    </ul>
+                </div>
+                <div className="footer-budgets">
+                    <ul className="footer-list">
+                        <li>
+                            <h3>Peça ja seu orçamento</h3>
+                        </li>
+                        <li>
+                            <a>Contate-nos! Buscamos e entregamos seu aparelho </a>
+                        </li>
+                        <li>
+                            <a>Devido a pandemia do COVID-19 estamos atendendo das 8:30 as 17:30 e a avaliação na hora é feita até as 16h</a>
+                        </li>
+                        <li>
+                            <a href="#" className="footer-link">
+                                Entre em contato
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div className="footer-themes">
+                    <ul className="footer-list">
+                        <li>
+                            <h3>Tema</h3>
+                        </li>
+                        <li>
+                            <div className="footer-theme" onClick={() => changeTheme('white-theme')}>
+                                <Icon icon="ph:sun" />
+                                <p>Tema claro</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="footer-theme" onClick={() => changeTheme('dark-theme')}>
+                                <Icon icon="ph:moon" />              
+                                <p>Tema escuro</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="footer-theme" onClick={() => changeTheme('system-theme')}>
+                                <Icon icon="ph:desktop" />                              
+                                <p>Tema do sitema</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className="copyright">
+                <p>© Casa do Microondas. 2024 Todos os direitos reservados.</p>
             </div>
         </footer>
     );

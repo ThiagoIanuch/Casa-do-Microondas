@@ -1,31 +1,44 @@
 import '../css/menu.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 
 function Menu() {
-    const [color, setColor] = useState(false)
+    const [color, setColor] = useState(false);
+    const location = useLocation();
 
     const changeColor = function() {
         if(window.scrollY >= 75) {
-            setColor(true)
+            setColor(true);
         }
         else {
-            setColor(false)
-        }
-    }
+            setColor(false);
+        }       
+    };
 
-    window.addEventListener('scroll', changeColor)
+    useEffect(() => {
+        if(location.pathname == '/') {
+            window.addEventListener('scroll', changeColor);
+        }
+        else {
+            setColor(true);
+        }
+
+        return () => {
+            window.removeEventListener('scroll', changeColor);
+        };
+    }, [location.pathname]);
 
     return (
         <header className={color ? "header-container" : "header-container bg-hero"}>
             <div className={color ? "logo" : "logo filter-hero"}>
-                <a href="#"><img src="logo.png"></img></a>
+                <a href="/"><img src="logo.png"></img></a>
             </div>
             <nav className="nav-container">
                 <ul className="menu-links">
-                    <li className={color ? "menu-link" : "menu-link color-hero"}><a href="#">Home</a></li>
+                    <li className={color ? "menu-link" : "menu-link color-hero"}><a href="/">Home</a></li>
                     <li className={color ? "menu-link" : "menu-link color-hero"}>
-                        <a href="#">Serviços</a>
+                        <p>Serviços</p>
                         <ul className="sub-menu-links">
                             <li className="sub-menu-link"><a href="#">Conserto de microondas</a></li>
                             <li className="sub-menu-link"><a href="#">Conserto de forno elétrico</a></li>
@@ -34,17 +47,17 @@ function Menu() {
                         </ul>
                     </li>
                     <li className={color ? "menu-link" : "menu-link color-hero"}>
-                        <a href="#">Comprar</a>
+                        <p>Comprar</p>
                         <ul className="sub-menu-links">
                             <li className="sub-menu-link"><a href="#">Acessórios</a></li>
                             <li className="sub-menu-link"><a href="#">Microondas novos e usados</a></li>
                         </ul>
                     </li>
                     <li className={color ? "menu-link" : "menu-link color-hero"}>
-                        <a href="#">Mais informações</a>
+                        <p>Informações</p>
                         <ul className="sub-menu-links">
-                            <li className="sub-menu-link"><a href="#">Localização</a></li>
-                            <li className="sub-menu-link"><a href="#">Fotos</a></li>
+                            <li className="sub-menu-link"><a href="/location">Localização</a></li>
+                            <li className="sub-menu-link"><a href="/photos">Fotos</a></li>
                             <li className="sub-menu-link"><a href="#">Avaliação na hora</a></li>
                         </ul>
                     </li>

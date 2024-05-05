@@ -2,12 +2,13 @@
     --color-background: rgba(255, 255, 255, 1);
     --color-foreground: white;
     --color-midground: #eee;
-    --color-font: rgb(232, 230, 227);
     --color-font: rgba(0, 0, 0, 1);
     --color-hero-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 1));
     --color-logo: invert(0%) sepia(98%) saturate(0%) hue-rotate(331deg) brightness(92%) contrast(102%);
     --color-border: #eee;
+    --color-border-img: rgb(53, 57, 59);
     --color-orange: rgba(255, 123, 36, 1);
+    --color-shadows: #0006;
 }
 
 .dark-theme {
@@ -18,4 +19,6 @@
     --color-hero-gradient: linear-gradient(180deg, rgba(24, 26, 27, 0), rgba(24, 26, 27, 1));
     --color-logo: invert(100%) sepia(100%) saturate(0%) hue-rotate(206deg) brightness(102%) contrast(105%);
     --color-border: rgb(53, 57, 59);
+    --color-border-img: #eee;
+    --color-shadows: transparent;
 }

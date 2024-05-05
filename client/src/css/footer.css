@@ -125,6 +125,35 @@ footer {
     margin-left: 15px;
 }
 
+#footer-content a:hover, .footer-theme p:hover, .footer-link p:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.contact-link {
+    color: white!important;
+    background-color: var(--color-orange);
+    width: 165px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+}
+
+.contact-link:hover {
+    color: var(--color-font)!important;
+    background-color: var(--color-midground);
+    text-decoration: none!important;
+}
+
+.contact-link-container {
+    width: 100%;
+    display: flex;
+}
+
 /* Adicionar responsabilidade */
 @media screen and (max-width: 900px) {
     #footer-content {
@@ -140,6 +169,10 @@ footer {
     }
 
     .footer-link, .footer-theme {
+        justify-content: center;
+    }
+
+    .contact-link-container {
         justify-content: center;
     }
 }

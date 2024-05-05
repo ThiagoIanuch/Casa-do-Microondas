@@ -23,18 +23,18 @@ function Footer() {
                 <div id="footer-contacts">
                     <h3>Fale conosco</h3>
                     <div id="footer-numbers">
-                        <a href="#" className="footer-link" id="telephone">
+                        <div className="footer-link" id="telephone">
                             <Icon icon="iconamoon:phone-fill" className="footer-icon"/>                            
                             <p>(41) 3332-8000</p>
-                        </a>
-                        <a href="#" className="footer-link" id="whatsapp">
+                        </div>
+                        <div className="footer-link" id="whatsapp">
                             <Icon icon="ic:baseline-whatsapp" className="footer-icon"/>
                             <p>(41) 98516-3600</p>
-                        </a>
-                        <a href="#" className="footer-link" id="whatsapp">
+                        </div>
+                        <div className="footer-link" id="whatsapp">
                             <Icon icon="ic:baseline-whatsapp" className="footer-icon"/>
                             <p>(41) 98516-3602</p>
-                        </a>
+                        </div>
                     </div>
                 </div>
                 <div className="footer-shops">
@@ -56,13 +56,13 @@ function Footer() {
                             <h3>Peça ja seu orçamento</h3>
                         </li>
                         <li>
-                            <a>Contate-nos! Buscamos e entregamos seu aparelho </a>
+                            <p>Contate-nos! Buscamos e entregamos seu aparelho </p>
                         </li>
                         <li>
-                            <a>Devido a pandemia do COVID-19 estamos atendendo das 8:30 as 17:30 e a avaliação na hora é feita até as 16h</a>
+                            <p>Devido a pandemia do COVID-19 estamos atendendo das 8:30 as 17:30 e a avaliação na hora é feita até as 16h</p>
                         </li>
-                        <li>
-                            <a href="#" className="footer-link">
+                        <li className="contact-link-container">
+                            <a href="/contact" className="footer-link contact-link">
                                 Entre em contato
                             </a>
                         </li>

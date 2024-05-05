@@ -8,7 +8,7 @@ function Photos(){
             <Menu></Menu>
 
             <div className="photos-container">
-                <h1>Fotos da Casa do Microondas</h1>
+                <h2>Fotos da Casa do Microondas</h2>
                 <div className="photos">
                     <a href="foto 1.jpg" class="item">
                         <img src="foto 1.jpg" alt="" />

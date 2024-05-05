@@ -69,7 +69,7 @@ function Menu() {
             </nav>
 
             <div className="login-container">
-                <button className={color ? "login-link" : "login-link color-hero"}>Entrar</button>
+                <a href="/login" className={color ? "login-link" : "login-link color-hero"}>Entrar</a>
             </div>
         </header>
     )

@@ -18,8 +18,7 @@ header h1{
 }
 
 .item{
-    border: 1px solid #282829;
-    box-shadow: 5px 5px 5px #0006;
+    box-shadow: 0px 5px 5px var(--color-shadows);
 }
 
 .item img{
@@ -42,10 +41,13 @@ header h1{
     box-sizing: border-box;
 }
 
-.photos-container h1 {
+.photos-container h2 {
     font-family: 'Montserrat';
     margin-bottom: 35px;
     color: var(--color-font);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 /* Adicionar responsabilidade */

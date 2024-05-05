@@ -1,19 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
-main{
-    height: 80vh;
-}
-
 footer {
     width: 100%;
-    color: #d6d2d2;
-}
+    background-color: var(--color-foreground);
+    color: var(--color-font);
+    border-top: 1px solid var(--color-border);
+    margin-top: auto;
+} 
 
 #footer-content {
-    background-color: #171717;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 3rem 3.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+    font-family: 'Montserrat';
 }
 
 #footer-contacts h1{
@@ -21,15 +18,14 @@ footer {
 }
 
 #footer-contacts p{
-    color: white;
+    color: var(--color-font);
 }
 
 #footer-numbers {
     display: flex;
     flex-direction: column;
-    gap: 0.50rem;
-    gap: 2rem;
-    margin-top: 1.5rem;
+    gap: 1.5rem;
+    margin-top: 1rem;
     list-style: none;
 }
 
@@ -64,13 +60,9 @@ footer {
 }
 
 .footer-list .footer-link{
-    color: #d6d2d2;
+    color: var(--color-font);
     transition: all 0.4s;
     text-decoration: none;
-}
-
-.footer-list .footer-link:hover{
-    color: #7f37c9;
 }
 
 .footer-booton{
@@ -97,4 +89,57 @@ footer {
     font-size: 0.9rem;
     padding: 1.5rem;
     font-weight: 100;
+}
+
+.footer-shops {
+    width: 25%;
+}
+
+.footer-budgets {
+    width: 20%;
+}
+
+.footer-icon {
+    margin-right: 5px;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    padding: 3.5rem 3rem 1.5rem;
+    box-sizing: border-box;
+}
+
+.copyright{
+    margin-top: 35px;
+    font-family: 'Montserrat';
+    text-align: center;
+}
+
+.footer-list li .footer-theme {
+    display: flex;
+    cursor: pointer;
+}
+
+.footer-list li .footer-theme p {
+    margin-left: 15px;
+}
+
+/* Adicionar responsabilidade */
+@media screen and (max-width: 900px) {
+    #footer-content {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2.5rem;
+    }
+
+    .footer-budgets, .footer-shops, #footer-contacts, .footer-themes {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-link, .footer-theme {
+        justify-content: center;
+    }
 }

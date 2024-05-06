@@ -2,7 +2,7 @@
 
 Casa do Microondas é um projeto de um site para uma assistência de microondas que será apresentado na disciplina de Desenvolvimento Web e Banco de Dados
 
-![Webp net-resizeimage](https://github.com/ThiagoIanuch/Casa-do-Microondas/assets/63036139/8f797355-432f-42dd-8bfe-fc2915821153)
+<img src="https://i.imgur.com/j7mBnyG.png">
 
 ### Construido com
 

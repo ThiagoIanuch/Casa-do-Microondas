@@ -40,28 +40,28 @@ function Menu() {
                     <li className={color ? "menu-link" : "menu-link color-hero"}>
                         <p>Serviços</p>
                         <ul className="sub-menu-links">
-                            <li className="sub-menu-link"><a href="#">Conserto de microondas</a></li>
-                            <li className="sub-menu-link"><a href="#">Conserto de forno elétrico</a></li>
-                            <li className="sub-menu-link"><a href="#">Reforma de microondas</a></li>
-                            <li className="sub-menu-link"><a href="#">Busca e entrega</a></li>
+                            <li className="sub-menu-link"><a href="/construction">Conserto de microondas</a></li>
+                            <li className="sub-menu-link"><a href="/construction">Conserto de forno elétrico</a></li>
+                            <li className="sub-menu-link"><a href="/construction">Reforma de microondas</a></li>
+                            <li className="sub-menu-link"><a href="/construction">Busca e entrega</a></li>
                         </ul>
                     </li>
                     <li className={color ? "menu-link" : "menu-link color-hero"}>
                         <p>Comprar</p>
                         <ul className="sub-menu-links">
-                            <li className="sub-menu-link"><a href="#">Acessórios</a></li>
-                            <li className="sub-menu-link"><a href="#">Microondas novos e usados</a></li>
+                            <li className="sub-menu-link"><a href="/construction">Acessórios</a></li>
+                            <li className="sub-menu-link"><a href="/construction">Microondas novos e usados</a></li>
                         </ul>
                     </li>
                     <li className={color ? "menu-link" : "menu-link color-hero"}>
                         <p>Informações</p>
                         <ul className="sub-menu-links">
-                            <li className="sub-menu-link"><a href="/location">Localização</a></li>
+                            <li className="sub-menu-link"><a href="/construction">Localização</a></li>
                             <li className="sub-menu-link"><a href="/photos">Fotos</a></li>
-                            <li className="sub-menu-link"><a href="#">Avaliação na hora</a></li>
+                            <li className="sub-menu-link"><a href="/construction">Avaliação na hora</a></li>
                         </ul>
                     </li>
-                    <li className={color ? "menu-link" : "menu-link color-hero"}><a href="#">Contato</a></li>
+                    <li className={color ? "menu-link" : "menu-link color-hero"}><a href="/construction">Contato</a></li>
                 </ul>
                 <div className={color ? "search-icon" : "search-icon color-hero"}>
                     <Icon icon="ic:baseline-search" />

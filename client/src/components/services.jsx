@@ -20,7 +20,7 @@ function Services() {
                     </div>
 
                     <div className="services-link">
-                        <a href="#"><button className="service-button">Saiba mais</button></a>
+                        <a href="/construction"><button className="service-button">Saiba mais</button></a>
                     </div>
                 </div>
 
@@ -35,7 +35,7 @@ function Services() {
                         <p>Consertamos e reformamos seu forno em 4 horas.</p>
                     </div>
                     <div className="services-link">
-                        <a href="#"><button className="service-button">Saiba mais</button></a>
+                        <a href="/construction"><button className="service-button">Saiba mais</button></a>
                     </div>
                 </div>
 
@@ -53,7 +53,7 @@ function Services() {
                         </p>
                     </div>
                     <div className="services-link">
-                        <a href="#"><button className="service-button">Saiba mais</button></a>
+                        <a href="/construction"><button className="service-button">Saiba mais</button></a>
                     </div>
                 </div>
 
@@ -68,7 +68,7 @@ function Services() {
                         <p>Temos microondas a pronta entrega de diversas marcas e modelos direto da fábrica. 127V e 220V.</p>
                     </div>
                     <div className="services-link">
-                        <a href="#"><button className="service-button">Saiba mais</button></a>
+                        <a href="/construction"><button className="service-button">Saiba mais</button></a>
                     </div>
                 </div>
 
@@ -83,7 +83,7 @@ function Services() {
                         <p>Temos pratos, roldanas, cruzetas e outro acessórios para forno de microondas</p>
                     </div>
                     <div className="services-link">
-                        <a href="#"><button className="service-button">Saiba mais</button></a>
+                        <a href="/construction"><button className="service-button">Saiba mais</button></a>
                     </div>
                 </div>
 
@@ -98,7 +98,7 @@ function Services() {
                         <p>Buscamos o seu aparelho em toda Curitiba.</p>
                     </div>
                     <div className="services-link">
-                        <a href="#"><button className="service-button">Saiba mais</button></a>
+                        <a href="/construction"><button className="service-button">Saiba mais</button></a>
                     </div>
                 </div>
             </div>

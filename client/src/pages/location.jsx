@@ -1,7 +1,8 @@
 
 
-    import Menu from '../components/menu.jsx'
+import Menu from '../components/menu.jsx'
 import Footer from '../components/footer.jsx'
+import '../css/location.css'
 
 function Location() {
     return (

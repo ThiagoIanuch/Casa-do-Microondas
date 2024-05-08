@@ -43,10 +43,10 @@ function Footer() {
                             <h3>Onde estamos</h3>
                         </li>
                         <li>
-                            <a href="/localization" className="footer-link">Loja 1 - Avenida Presidente Kennedy 410, Rebouças - Curitiba</a>
+                            <a href="/construction" className="footer-link">Loja 1 - Avenida Presidente Kennedy 410, Rebouças - Curitiba</a>
                         </li>
                         <li>
-                            <a href="/localization" className="footer-link">Loja 2 - Rua Saturnino Miranda, 84 - Santa Felicidade - Curitiba</a>
+                            <a href="/construction" className="footer-link">Loja 2 - Rua Saturnino Miranda, 84 - Santa Felicidade - Curitiba</a>
                         </li>
                     </ul>
                 </div>
@@ -62,7 +62,7 @@ function Footer() {
                             <p>Devido a pandemia do COVID-19 estamos atendendo das 8:30 as 17:30 e a avaliação na hora é feita até as 16h</p>
                         </li>
                         <li className="contact-link-container">
-                            <a href="/contact" className="footer-link contact-link">
+                            <a href="/construction" className="footer-link contact-link">
                                 Entre em contato
                             </a>
                         </li>

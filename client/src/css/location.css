@@ -9,7 +9,7 @@
     position: relative;
     width: 800px;
     height: 500px;
-    margin-top: 30px;
+    margin-top: 5%;
 }
 
 .maps iframe:not(:last-child){
@@ -26,5 +26,11 @@
 }
 
 .ruas p:not(:first-child){
-    margin-left: 570px;
+    margin-left: 560px;
+}
+
+.endereco{
+    margin-top: 4%;
+    color: var(--color-font);
+    font-weight: 700;
 }

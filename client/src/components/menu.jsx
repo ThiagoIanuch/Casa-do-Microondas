@@ -56,7 +56,7 @@ function Menu() {
                     <li className={color ? "menu-link" : "menu-link color-hero"}>
                         <p>Informações</p>
                         <ul className="sub-menu-links">
-                            <li className="sub-menu-link"><a href="/construction">Localização</a></li>
+                            <li className="sub-menu-link"><a href="/location">Localização</a></li>
                             <li className="sub-menu-link"><a href="/photos">Fotos</a></li>
                             <li className="sub-menu-link"><a href="/construction">Avaliação na hora</a></li>
                         </ul>

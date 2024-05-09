@@ -1,0 +1,30 @@
+.maps{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.maps iframe{
+    display: flex;
+    position: relative;
+    width: 800px;
+    height: 500px;
+    margin-top: 30px;
+}
+
+.maps iframe:not(:last-child){
+    margin-right: 120px;
+}
+
+.ruas{
+    display: flex;
+    height: 10px;
+}
+
+.ruas p:not(:last-child){
+    margin-left: 95px;
+}
+
+.ruas p:not(:first-child){
+    margin-left: 570px;
+}

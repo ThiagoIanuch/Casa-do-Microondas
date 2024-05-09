@@ -79,7 +79,7 @@ valor FLOAT NOT NULL
 
 create table Pedido(
 id_pedido INT NOT NULL primary key auto_increment,
-id_cliente INT NOT NULL,
+id_cliente_Pedido INT NOT NULL,
 valor FLOAT NOT NULL
 );
 
@@ -124,7 +124,7 @@ fornecedor VARCHAR(100) NOT NULL
 
 create table Funcionario(
 id_funcinario INT NOT NULL primary key auto_increment,
-id_filial INT NOT NULL,
+id_filial_Funcionario INT NOT NULL,
 id_departamento INT NOT NULL,
 id_funcao INT NOT NULL,
 nome VARCHAR(100) NOT NULL,
@@ -241,8 +241,8 @@ ALTER TABLE ProdutoReparo ADD CONSTRAINT id_modelo
 ALTER TABLE Modelo ADD CONSTRAINT id_marca
 	FOREIGN KEY (id_marca) REFERENCES Marca(id_marca);
 
-ALTER TABLE Modelo ADD CONSTRAINT id_categaria
-	FOREIGN KEY (id_categaria) REFERENCES Categoria(id_categaria);
+ALTER TABLE Modelo ADD CONSTRAINT id_categoria
+	FOREIGN KEY (id_categaria) REFERENCES Categoria(id_categoria);
     
 ALTER TABLE Modelo ADD CONSTRAINT id_tipo
 	FOREIGN KEY (id_tipo) REFERENCES Tipo(id_tipo);
@@ -252,9 +252,6 @@ ALTER TABLE AcessorioOrdemServico ADD CONSTRAINT id_ordem_servico
     
 ALTER TABLE AcessorioOrdemServico ADD CONSTRAINT id_acessorio
 	FOREIGN KEY (id_acessorio) REFERENCES Acessorio(id_acessorio);
-    
-ALTER TABLE PecaSolicitada ADD CONSTRAINT id_ordem_servico
-	FOREIGN KEY (id_ordem_servico) REFERENCES Ordemservico(id_ordem_servico);
     
 ALTER TABLE PecaSolicitada ADD CONSTRAINT id_ordem_servico_PecaSolicitada
 	FOREIGN KEY (id_ordem_servico_PecaSolicitada) REFERENCES PecaFornecedor(id_peca_fornecedor);
@@ -274,8 +271,8 @@ ALTER TABLE Pagamento ADD CONSTRAINT id_forma_pagamento_Pagamento
 ALTER TABLE Pagamento ADD CONSTRAINT id_pedido
 	FOREIGN KEY (id_pedido) REFERENCES Pedido(id_pedido);
     
-ALTER TABLE Pedido ADD CONSTRAINT id_cliente
-	FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente);
+ALTER TABLE Pedido ADD CONSTRAINT id_cliente_Pedido
+	FOREIGN KEY (id_cliente_Pedido) REFERENCES Cliente(id_cliente);
     
 ALTER TABLE ProdutoPedido ADD CONSTRAINT id_produto_venda
 	FOREIGN KEY (id_produto_venda) REFERENCES ProdutoVenda(id_produto_venda);
@@ -286,11 +283,11 @@ ALTER TABLE ProdutoPedido ADD CONSTRAINT id_pedido_ProdutoPedido
 ALTER TABLE ProdutoVenda ADD CONSTRAINT id_modelo_ProdutoVenda
 	FOREIGN KEY (id_modelo_ProdutoVenda) REFERENCES Modelo(id_modelo);
     
-ALTER TABLE Funcionario ADD CONSTRAINT id_filial_funcionario
-	FOREIGN KEY (id_filial_funcionario) REFERENCES Filial(id_filial);
+ALTER TABLE Funcionario ADD CONSTRAINT id_filial_Funcionario
+	FOREIGN KEY (id_filial_Funcionario) REFERENCES Filial(id_filial);
     
-ALTER TABLE Funcionario ADD CONSTRAINT id_departamento_Funcionario
-	FOREIGN KEY (id_departamento_Funcionario) REFERENCES Departamento(id_departamento);
+ALTER TABLE Funcionario ADD CONSTRAINT id_departamento
+	FOREIGN KEY (id_departamento) REFERENCES Departamento(id_departamento);
     
 ALTER TABLE Funcionario ADD CONSTRAINT id_funcao
 	FOREIGN KEY (id_funcao) REFERENCES Funcao(id_funcao);

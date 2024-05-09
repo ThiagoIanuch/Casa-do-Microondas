@@ -43,10 +43,10 @@ function Footer() {
                             <h3>Onde estamos</h3>
                         </li>
                         <li>
-                            <a href="/construction" className="footer-link">Loja 1 - Avenida Presidente Kennedy 410, Rebouças - Curitiba</a>
+                            <a href="/location" className="footer-link">Loja 1 - Avenida Presidente Kennedy 410, Rebouças - Curitiba</a>
                         </li>
                         <li>
-                            <a href="/construction" className="footer-link">Loja 2 - Rua Saturnino Miranda, 84 - Santa Felicidade - Curitiba</a>
+                            <a href="/location" className="footer-link">Loja 2 - Rua Saturnino Miranda, 84 - Santa Felicidade - Curitiba</a>
                         </li>
                     </ul>
                 </div>

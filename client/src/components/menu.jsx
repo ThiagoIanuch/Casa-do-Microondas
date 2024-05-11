@@ -61,7 +61,7 @@ function Menu() {
                             <li className="sub-menu-link"><a href="/construction">Avaliação na hora</a></li>
                         </ul>
                     </li>
-                    <li className={color ? "menu-link" : "menu-link color-hero"}><a href="/construction">Contato</a></li>
+                    <li className={color ? "menu-link" : "menu-link color-hero"}><a href="/contact">Contato</a></li>
                 </ul>
                 <div className={color ? "search-icon" : "search-icon color-hero"}>
                     <Icon icon="ic:baseline-search" />

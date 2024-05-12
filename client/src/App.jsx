@@ -5,6 +5,7 @@ import Photos from './pages/photos.jsx';
 import Login from './pages/login.jsx';
 import Construction from './pages/construction.jsx';
 import Location from './pages/location.jsx';
+import Contact from './pages/contact.jsx';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/construction" element={<Construction/>}></Route>
           <Route path="/location" element={<Location/>}></Route>
+          <Route path="/location" element={<Contact/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

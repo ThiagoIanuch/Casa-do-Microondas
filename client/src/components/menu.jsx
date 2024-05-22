@@ -70,6 +70,7 @@ function Menu() {
 
             <div className="login-container">
                 <a href="/login" className={color ? "login-link" : "login-link color-hero"}>Entrar</a>
+                <a href="/register" className={color ? "login-link register" : "login-link color-hero register"}>Registrar</a>
             </div>
         </header>
     )

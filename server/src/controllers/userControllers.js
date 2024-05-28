@@ -3,41 +3,37 @@ const bcrypt = require('bcrypt');
 const { body, validationResult } = require('express-validator');
 
 exports.validateUser = [
-    // Email
+    // Validações de email, nome, sobrenome e senha
     body('email')
         .notEmpty().withMessage('Insira seu email')
         .isEmail().withMessage('O e-mail deve ser válido')
         .isLength({ max: 255 }).withMessage('O e-mail deve conter no máximo 255 caracteres')
         .custom(async (email) => {
-            const consultQuery = 'SELECT email FROM user WHERE email = ?';
+            const SQL = 'SELECT email FROM user WHERE email = ?';
 
             try {
-                const [result] = await db.promise().query(consultQuery, [email]);
+                const [result] = await db.query(SQL, [email]);
 
                 if (result.length > 0) {
                     return Promise.reject('Este e-mail já está cadastrado no sistema');
                 }
-            } catch {
+            } catch (error) {
                 return Promise.reject('Ocorreu um erro ao verificar o e-mail. Tente novamente');
             }
         }),
 
-    // Nome
     body('firstName')
         .notEmpty().withMessage('Insira seu nome')
         .isLength({ max: 50 }).withMessage('O nome deve conter no máximo 50 caracteres'),
 
-    // Sobrenome
     body('lastName')
         .notEmpty().withMessage('Insira seu sobrenome')
         .isLength({ max: 100 }).withMessage('O sobrenome deve conter no máximo 100 caracteres'),
 
-    // Senha
     body('password')
         .notEmpty().withMessage('Insira sua senha')
         .isLength({ min: 8, max: 30 }).withMessage('A senha deve conter entre 8 e 30 caracteres'),
 
-    // Confirmar a senha
     body('confirmPassword')
         .notEmpty().withMessage('Confirme a sua senha')
         .custom((confirmPassword, { req }) => {
@@ -57,18 +53,18 @@ exports.registerUser = async (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    // Cadastrar no sistema
-    const { email, firstName, lastName, password } = req.body;
+    // Cadastra o usuário
+    const SQL = 'INSERT INTO user (email, first_name, last_name, password) VALUES (?, ?, ?, ?)';
 
-    const insertQuery = 'INSERT INTO user (email, first_name, last_name, password) VALUES (?, ?, ?, ?)';
+    const { email, firstName, lastName, password } = req.body;
 
     const hashPassword = await bcrypt.hash(password, 8);
 
-    db.query(insertQuery, [email, firstName, lastName, hashPassword], (error) => {
-        if (error) {
-            return res.status(400).json({ msg: 'Erro ao realizar o cadastro. Tente novamente' });
-        } else {
-            return res.status(200).json({ msg: 'Usuário cadastrado com sucesso!' });
-        }
-    });
+    try {
+        await db.query(SQL, [email, firstName, lastName, hashPassword]);
+        
+        return res.status(200).json({ msg: 'Usuário cadastrado com sucesso!' });
+    } catch (error) {
+        return res.status(400).json({ msg: 'Erro ao realizar o cadastro. Tente novamente' });
+    }
 };

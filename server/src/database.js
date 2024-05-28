@@ -1,10 +1,8 @@
-// Importar as bibliotecas
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
 
 dotenv.config();
 
-// Realizar a conexão com o banco de dados
 const db = mysql.createConnection({
     host: process.env.HOST,
     user: process.env.USER,
@@ -13,12 +11,11 @@ const db = mysql.createConnection({
 });
 
 db.connect((error) => {
-    if(error) {
+    if (error) {
         console.log('Não foi possível se conectar ao banco de dados');
+    } else {
+        console.log('Conexão com o banco de dados realizada com sucesso!');
     }
-    else {
-        console.log('Conexão com o banco de dados realizada com sucesso!')
-    }
-})
+});
 
-module.exports = db;
+module.exports = db.promise();

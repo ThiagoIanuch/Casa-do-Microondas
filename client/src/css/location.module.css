@@ -16,20 +16,20 @@
     margin-right: 120px;
 }
 
-.ruas{
+.streets{
     display: flex;
     height: 10px;
 }
 
-.ruas p:not(:last-child){
+.streets p:not(:last-child){
     margin-left: 95px;
 }
 
-.ruas p:not(:first-child){
+.streets p:not(:first-child){
     margin-left: 560px;
 }
 
-.endereco{
+.address{
     margin-top: 4%;
     color: var(--color-font);
     font-weight: 700;

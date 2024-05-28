@@ -1,5 +1,5 @@
-import '../css/menu.css'
-import { useState, useEffect } from 'react'
+import styles from '../css/menu.module.css';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 
@@ -7,20 +7,18 @@ function Menu() {
     const [color, setColor] = useState(false);
     const location = useLocation();
 
-    const changeColor = function() {
-        if(window.scrollY >= 75) {
+    const changeColor = () => {
+        if (window.scrollY >= 75) {
             setColor(true);
-        }
-        else {
+        } else {
             setColor(false);
-        }       
+        }
     };
 
     useEffect(() => {
-        if(location.pathname == '/') {
+        if (location.pathname === '/') {
             window.addEventListener('scroll', changeColor);
-        }
-        else {
+        } else {
             setColor(true);
         }
 
@@ -30,50 +28,50 @@ function Menu() {
     }, [location.pathname]);
 
     return (
-        <header className={color ? "header-container" : "header-container bg-hero"}>
-            <div className={color ? "logo" : "logo filter-hero"}>
-                <a href="/"><img src="logo.png"></img></a>
+        <header className={color ? styles['header-container'] : `${styles['header-container']} ${styles['bg-hero']}`}>
+            <div className={color ? styles['logo'] : `${styles['logo']} ${styles['filter-hero']}`}>
+                <a href="/"><img src="logo.png" alt="Logo"></img></a>
             </div>
-            <nav className="nav-container">
-                <ul className="menu-links">
-                    <li className={color ? "menu-link" : "menu-link color-hero"}><a href="/">Home</a></li>
-                    <li className={color ? "menu-link" : "menu-link color-hero"}>
+            <nav className={styles['nav-container']}>
+                <ul className={styles['menu-links']}>
+                    <li className={color ? styles['menu-link'] : `${styles['menu-link']} ${styles['color-hero']}`}><a href="/">Home</a></li>
+                    <li className={color ? styles['menu-link'] : `${styles['menu-link']} ${styles['color-hero']}`}>
                         <p>Serviços</p>
-                        <ul className="sub-menu-links">
-                            <li className="sub-menu-link"><a href="/construction">Conserto de microondas</a></li>
-                            <li className="sub-menu-link"><a href="/construction">Conserto de forno elétrico</a></li>
-                            <li className="sub-menu-link"><a href="/construction">Reforma de microondas</a></li>
-                            <li className="sub-menu-link"><a href="/construction">Busca e entrega</a></li>
+                        <ul className={styles['sub-menu-links']}>
+                            <li className={styles['sub-menu-link']}><a href="/construction">Conserto de microondas</a></li>
+                            <li className={styles['sub-menu-link']}><a href="/construction">Conserto de forno elétrico</a></li>
+                            <li className={styles['sub-menu-link']}><a href="/construction">Reforma de microondas</a></li>
+                            <li className={styles['sub-menu-link']}><a href="/construction">Busca e entrega</a></li>
                         </ul>
                     </li>
-                    <li className={color ? "menu-link" : "menu-link color-hero"}>
+                    <li className={color ? styles['menu-link'] : `${styles['menu-link']} ${styles['color-hero']}`}>
                         <p>Comprar</p>
-                        <ul className="sub-menu-links">
-                            <li className="sub-menu-link"><a href="/construction">Acessórios</a></li>
-                            <li className="sub-menu-link"><a href="/construction">Microondas novos e usados</a></li>
+                        <ul className={styles['sub-menu-links']}>
+                            <li className={styles['sub-menu-link']}><a href="/construction">Acessórios</a></li>
+                            <li className={styles['sub-menu-link']}><a href="/construction">Microondas novos e usados</a></li>
                         </ul>
                     </li>
-                    <li className={color ? "menu-link" : "menu-link color-hero"}>
+                    <li className={color ? styles['menu-link'] : `${styles['menu-link']} ${styles['color-hero']}`}>
                         <p>Informações</p>
-                        <ul className="sub-menu-links">
-                            <li className="sub-menu-link"><a href="/location">Localização</a></li>
-                            <li className="sub-menu-link"><a href="/photos">Fotos</a></li>
-                            <li className="sub-menu-link"><a href="/construction">Avaliação na hora</a></li>
+                        <ul className={styles['sub-menu-links']}>
+                            <li className={styles['sub-menu-link']}><a href="/location">Localização</a></li>
+                            <li className={styles['sub-menu-link']}><a href="/photos">Fotos</a></li>
+                            <li className={styles['sub-menu-link']}><a href="/construction">Avaliação na hora</a></li>
                         </ul>
                     </li>
-                    <li className={color ? "menu-link" : "menu-link color-hero"}><a href="/contact">Contato</a></li>
+                    <li className={color ? styles['menu-link'] : `${styles['menu-link']} ${styles['color-hero']}`}><a href="/contact">Contato</a></li>
                 </ul>
-                <div className={color ? "search-icon" : "search-icon color-hero"}>
+                <div className={color ? styles['search-icon'] : `${styles['search-icon']} ${styles['color-hero']}`}>
                     <Icon icon="ic:baseline-search" />
                 </div>
             </nav>
 
-            <div className="login-container">
-                <a href="/login" className={color ? "login-link" : "login-link color-hero"}>Entrar</a>
-                <a href="/register" className={color ? "login-link register" : "login-link color-hero register"}>Registrar</a>
+            <div className={styles['login-container']}>
+                <a href="/login" className={color ? styles['login-link'] : `${styles['login-link']} ${styles['color-hero']}`}>Entrar</a>
+                <a href="/register" className={color ? `${styles['login-link']} ${styles['register']}` : `${styles['login-link']} ${styles['color-hero']} ${styles['register']}`}>Registrar</a>
             </div>
         </header>
-    )
+    );
 }
 
-export default Menu 
+export default Menu;

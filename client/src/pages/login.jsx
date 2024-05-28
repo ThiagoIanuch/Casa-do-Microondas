@@ -1,19 +1,22 @@
 import Menu from '../components/menu.jsx'
 import Footer from '../components/footer.jsx'
-import '../css/login.css'
+import styles from '../css/forms.module.css'
 
 function Login() {
     return (
         <>
             <Menu></Menu>
 
-            <div className="login-form-container">
-                <div className="form-container">
-                    <h2>Entrar</h2>
+            <div className={styles['page-content']}>
+                <div className={styles['form-container']}>
+                    <div className={styles['form-title']}>Entrar</div>
+
                     <form>
-                        <input type="text" className="login-field" placeholder="Nome de usuário ou email"></input>
-                        <input type="text" className="login-field" placeholder="Senha"></input>
-                        <input type="submit" className="login-button"></input>
+                        <input type="text" className={styles['form-input']} name="email" autoComplete="email" placeholder="E-mail"></input>
+            
+                        <input type="password" className={styles['form-input']} name="password" autoComplete="password" placeholder="Senha"></input>
+
+                        <input type="submit" className={styles['submit-btn']} value="Entrar"></input>
                     </form>
                 </div>
             </div>

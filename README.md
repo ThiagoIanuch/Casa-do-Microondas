@@ -24,21 +24,37 @@ Casa do Microondas é um projeto de um site para uma assistência de microondas 
     git clone https://github.com/ThiagoIanuch/Casa-do-Microondas.git
 ```
 
-2. Instale os pacotes NPM
+2. Instale os pacotes npm na pasta client e server
 ```
     cd client
     npm install
+
+    cd server
+    npm install
+```
+
+3. Crie um arquivo .dotenv na pasta server com as informações do banco de dados
+```
+    HOST = exemplohost
+    USER = exemplouser
+    PASSWORD = exemplosenha
+    DATABASE = exemplodatabase
 ```
 
 ## Utilização
-1. Inicie o servidor
+1. Inicie o servidor no lado do cliente e do servidor
 ```
+    cd client
     npm run dev
+
+    cd server
+    npm start
 ```
 
 2. Acesse o site no navegador
 ```
-    localhost:5173
+    localhost:5173 (cliente)
+    localhost:8080 (servidor)
 ```
 
 ## Colaboradores

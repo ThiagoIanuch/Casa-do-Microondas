@@ -1,0 +1,165 @@
+body.admin-body {
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background-color: #2a3447;
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Conteudo da página */
+.container {
+    display: flex;
+    flex: 1;
+}
+
+/* Menu esquerdo */
+.menu-admin {
+    height: 30px;
+}
+.logo {
+    height: 65px;
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    height: 50px;
+    filter:invert(100%) sepia(100%) saturate(0%) hue-rotate(206deg) brightness(102%) contrast(105%);
+}
+
+.menu-container {
+    width: 200px;
+    padding: 5px 20px;
+    border-right: 2px solid #384256;
+}
+
+.left-menu ul li {
+    list-style: none;
+}
+
+.item {
+    font-size: 18px;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.item:hover {
+    background-color: #384256;
+    border-radius: 5px;
+}
+
+.icon-size {
+    margin-left: 5px;
+}
+
+.item-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Conteudo principal */
+.content-container {
+    padding: 20px;
+    width: 100%;
+    padding-bottom: 0;
+}
+
+/* Rodapé */
+.footer-admin {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    font-weight: bold;
+    padding: 0 30px;
+    text-transform: uppercase;
+    letter-spacing: -0.2px;
+    border-top: 2px solid #384256;
+
+}
+
+/* Dados */
+.data-grid {
+    background-color: white;
+    padding: 5px 20px;
+}
+
+.MuiDataGrid-toolbarContainer {
+    flex-direction: row-reverse;
+}
+
+.css-1kwdphh-MuiDataGrid-virtualScrollerContent  {
+    min-height: 50px !important;
+}
+
+.data-img-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.data-img {
+    height: 15px;
+}
+
+.action-btn {
+    padding: 6px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    color: white;
+    font-weight: 700;
+}
+
+.edit {
+    margin-right: 5px;
+    background-color: rgb(255,193,7);
+}
+
+.delete {
+    background-color: rgb(220,53,69);
+}
+
+.info {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.info h1 {
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.btn-add {
+    margin-left: 10px;
+    background-color: rgb(45, 188, 57);
+}
+
+.item-link span {
+    font-size: 16px;
+    padding-top: 2px;
+}
+
+.data-grid {
+    width: 100%!important;
+    height: 100%!important;
+}
+
+.btn-add {
+    position: absolute;
+    left: 375px;
+}
+
+.info-home {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-home p {
+    margin-top: 30px;
+}

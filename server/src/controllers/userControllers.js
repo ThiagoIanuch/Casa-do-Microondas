@@ -45,7 +45,7 @@ exports.validateUser = [
         })
 ];
 
-exports.registerUser = async (req, res) => {
+exports.register = async (req, res) => {
     // Retorna se houver erros
     const errors = validationResult(req);
 
@@ -68,3 +68,7 @@ exports.registerUser = async (req, res) => {
         return res.status(400).json({ msg: 'Erro ao realizar o cadastro. Tente novamente' });
     }
 };
+
+exports.login = async (req, res) => {
+    
+}

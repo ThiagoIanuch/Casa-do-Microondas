@@ -1,7 +1,7 @@
 const db = require('../database.js');
 
 // Obter os produtos
-exports.getProducts = async (req, res) => {
+exports.get = async (req, res) => {
     const SQL = 'SELECT * FROM product';
 
     try {
@@ -14,8 +14,26 @@ exports.getProducts = async (req, res) => {
     }
 }
 
-// Deletar os produtos
-exports.deleteProduct = async (req, res) => {
+// Adicionar novo produto
+exports.add = async (req, res) => {
+    const {type, description, price } = req.body;
+
+    const image = '1234.png';
+
+    const SQL = 'INSERT INTO product (type, description, image, price) VALUES (?, ?, ?,?)';
+    try {
+        await db.query(SQL, [type, description, image, price]);
+
+        return res.status(200).json({msg: 'Produto adicionado com sucesso'}); 
+    }
+    catch (error){
+        console.log(error);
+        return res.status(400).json({msg: 'Erro ao adicionar produto'}); 
+    }
+}
+
+// Deletar produto
+exports.delete = async (req, res) => {
     const SQL = 'DELETE FROM product WHERE id = ?';
 
     const id = req.params.id;
@@ -27,5 +45,24 @@ exports.deleteProduct = async (req, res) => {
     }
     catch {
         return res.status(400).json({msg: 'Ocorreu um erro ao deletar o produto'});
+    }
+}
+
+// Atualizar produto
+exports.update = async (req, res) => {
+
+    const id = req.params.id;
+
+    const {type, description, price} = req.body;
+
+    const SQL = 'UPDATE product SET type = ?, description = ?, price = ? WHERE ID = ?'
+
+    try {
+        await db.query(SQL, [type, description, price, id])
+        return res.status(200).json({msg: 'Produto atualizado com sucesso'}); 
+    }
+    catch {
+        console.log('err');
+        return res.status(400).json({msg: 'Ocorreu um erro ao atualizar o produto'});
     }
 }

@@ -2,15 +2,13 @@ const db = require('../database.js');
 
 // Obter os serviços
 exports.get = async (req, res) => {
-    const SQL = 'SELECT * FROM service';
+    const SQL = 'CALL GetServices()';
 
     try {
         const [result] = await db.query(SQL);
-
-        return res.status(200).json(result);
-    }
-    catch {
-        return res.status(400).json({msg: 'Ocorreu um erro ao obter os serviço.'});
+        return res.status(200).json(result[0]);
+    } catch {
+        return res.status(400).json({msg: 'Ocorreu um erro ao obter os serviços.'});
     }
 }
 

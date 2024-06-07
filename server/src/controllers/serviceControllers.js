@@ -15,18 +15,16 @@ exports.get = async (req, res) => {
 // Adicionar novo serviço
 exports.add = async (req, res) => {
     const {name, description, status} = req.body;
-
-
-
-    const SQL = 'INSERT INTO service (name, description, status) VALUES (?, ?, ?)';
+    const SQL = 'CALL AddService(?, ?, ?)';
     try {
-        await db.query(SQL, [name, description, status]);
 
-        return res.status(200).json({msg: 'serviço adicionado com sucesso'}); 
-    }
-    catch (error){
+        await db.query(SQL, [name, description, status]);
+        return res.status(200).json({msg: 'Serviço adicionado com sucesso'}); 
+
+    } catch (error){
         console.log(error);
         return res.status(400).json({msg: 'Erro ao adicionar serviço'}); 
+        
     }
 }
 

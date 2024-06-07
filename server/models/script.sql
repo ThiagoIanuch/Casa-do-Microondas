@@ -140,4 +140,10 @@ BEGIN
     SELECT * FROM services;
 END //
 
+
+CREATE PROCEDURE AddService(IN p_name VARCHAR(255), IN p_description VARCHAR(255), IN p_status BOOLEAN)
+BEGIN
+    INSERT INTO services (name, description, status) VALUES (p_name, p_description, p_status);
+END //
+
 DELIMITER ;

@@ -8,6 +8,7 @@ const productRoutes = require('./routes/productRoutes.js');
 const serviceRoutes = require('./routes/serviceRoutes.js');
 const brandRoutes = require('./routes/brandRoutes.js');
 const announcementRoutes = require('./routes/announcementRoutes.js');
+const contactRoutes = require('./routes/contactRoutes.js')
 
 // Iniciar o servidor e chamar as rotas
 const app = express();
@@ -19,6 +20,7 @@ app.use('/api/product', productRoutes);
 app.use('/api/service', serviceRoutes);
 app.use('/api/brand',brandRoutes);
 app.use('/api/announcement',announcementRoutes);
+app.use('/api/contact',contactRoutes);
 
 app.listen(8080, () => {
     console.log("Servidor iniciado na porta 8080");

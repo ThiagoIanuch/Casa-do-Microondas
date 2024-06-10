@@ -141,3 +141,91 @@ BEGIN
 END //
 
 DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE GetContacts()
+BEGIN
+    DECLARE exit handler FOR SQLEXCEPTION
+    BEGIN
+
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Ocorreu um erro ao carregar os contatos';
+    END;
+
+    SELECT * FROM contact;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE AddContact(
+    IN p_name VARCHAR(255),
+    IN p_email VARCHAR(255),
+    IN p_phone VARCHAR(20),
+    IN p_subject VARCHAR(255),
+    IN p_message TEXT
+)
+BEGIN
+    DECLARE exit handler FOR SQLEXCEPTION
+    BEGIN
+
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro ao adicionar contato';
+    END;
+
+    INSERT INTO contact (name, email, phone, subject, message) 
+    VALUES (p_name, p_email, p_phone, p_subject, p_message);
+    
+    SELECT 'contato adicionado com sucesso' AS msg;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE DeleteContact(
+    IN p_id INT
+)
+BEGIN
+    DECLARE exit handler FOR SQLEXCEPTION
+    BEGIN
+
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Ocorreu um erro ao deletar o contato';
+    END;
+
+    DELETE FROM contact WHERE id = p_id;
+
+    SELECT 'contato deletado com sucesso' AS msg;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE UpdateContact(
+    IN p_id INT,
+    IN p_name VARCHAR(255),
+    IN p_email VARCHAR(255),
+    IN p_phone VARCHAR(20),
+    IN p_subject VARCHAR(255),
+    IN p_message TEXT
+)
+BEGIN
+    DECLARE exit handler FOR SQLEXCEPTION
+    BEGIN
+
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Ocorreu um erro ao atualizar o contato';
+    END;
+
+    UPDATE contact 
+    SET name = p_name, 
+        email = p_email, 
+        phone = p_phone, 
+        subject = p_subject, 
+        message = p_message 
+    WHERE id = p_id;
+    
+    SELECT 'contato atualizado com sucesso' AS msg;
+END //
+
+DELIMITER ;

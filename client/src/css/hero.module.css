@@ -60,7 +60,6 @@
 }
 
 .hero-button:hover {
-    color: var(--color-font);
     background-color: rgb(252, 142, 69);
     cursor: pointer;
 }

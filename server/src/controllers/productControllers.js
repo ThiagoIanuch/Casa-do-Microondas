@@ -26,8 +26,7 @@ exports.add = async (req, res) => {
 
         return res.status(200).json({msg: 'Produto adicionado com sucesso'}); 
     }
-    catch (error){
-        console.log(error);
+    catch {
         return res.status(400).json({msg: 'Erro ao adicionar produto'}); 
     }
 }
@@ -82,8 +81,7 @@ exports.getOutlet = async (req, res) => {
 
         return res.status(200).json(result);
     }
-    catch (error) {
-        console.log(error)
+    catch {
         return res.status(400).json({msg: 'Ocorreu um erro ao obter os produtos.'});
     }
 }

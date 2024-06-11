@@ -16,16 +16,19 @@ exports.get = async (req, res) => {
 
 // Adicionar novo anuncio
 exports.add = async (req, res) => {
-    const {image,description,status} = req.body;
+    const {description,status} = req.body;
+
+    const image = req.file.filename;
+
+    const parsedStatus = status === 'true' ? 1 : 0;
     
     const SQL = 'INSERT INTO announcement (image,description,status) VALUES (?, ?, ?)';
     try {
-        await db.query(SQL, [image,description,status]);
+        await db.query(SQL, [image,description,parsedStatus]);
 
         return res.status(200).json({msg: 'anuncio adicionado com sucesso'}); 
     }
-    catch (error){
-        console.log(error);
+    catch {
         return res.status(400).json({msg: 'Erro ao adicionar anuncio'}); 
     }
 }
@@ -51,16 +54,24 @@ exports.update = async (req, res) => {
 
     const id = req.params.id;
 
-    const {image,description,status} = req.body;
+    const {description,status} = req.body;
+
+    let image = req.body.image;
+
+    // Verifica se existe imagem para atualizar
+    if (req.file) {
+        image = req.file.filename;
+    }
+
+    const parsedStatus = status === 'true' ? 1 : 0;
 
     const SQL = 'UPDATE announcement SET image = ?, description = ?, status = ? WHERE ID = ?'
 
     try {
-        await db.query(SQL, [image,description,status,id])
+        await db.query(SQL, [image,description,parsedStatus,id])
         return res.status(200).json({msg: 'anuncio atualizado com sucesso'}); 
     }
     catch {
-        console.log('err');
         return res.status(400).json({msg: 'Ocorreu um erro ao atualizar o anuncio'});
     }
 }

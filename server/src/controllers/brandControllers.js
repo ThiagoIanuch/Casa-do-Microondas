@@ -28,8 +28,7 @@ exports.add = async (req, res) => {
 
         return res.status(200).json({msg: 'marca adicionada com sucesso'}); 
     }
-    catch (error){
-        console.log(error);
+    catch {
         return res.status(400).json({msg: 'Erro ao adicionar marca'}); 
     }
 }
@@ -59,7 +58,7 @@ exports.update = async (req, res) => {
 
     let image = req.body.image;
 
-    // Verifica se existe ícone para atualizar
+    // Verifica se existe imagem para atualizar
     if (req.file) {
         image = req.file.filename;
     }
@@ -73,7 +72,6 @@ exports.update = async (req, res) => {
         return res.status(200).json({msg: 'marca atualizada com sucesso'}); 
     }
     catch {
-        console.log('err');
         return res.status(400).json({msg: 'Ocorreu um erro ao atualizar a marca'});
     }
 }

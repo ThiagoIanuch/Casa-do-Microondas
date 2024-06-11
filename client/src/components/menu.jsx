@@ -36,13 +36,7 @@ function Menu() {
                 <ul className={styles['menu-links']}>
                     <li className={color ? styles['menu-link'] : `${styles['menu-link']} ${styles['color-hero']}`}><a href="/">Home</a></li>
                     <li className={color ? styles['menu-link'] : `${styles['menu-link']} ${styles['color-hero']}`}>
-                        <p>Serviços</p>
-                        <ul className={styles['sub-menu-links']}>
-                            <li className={styles['sub-menu-link']}><a href="/construction">Conserto de microondas</a></li>
-                            <li className={styles['sub-menu-link']}><a href="/construction">Conserto de forno elétrico</a></li>
-                            <li className={styles['sub-menu-link']}><a href="/construction">Reforma de microondas</a></li>
-                            <li className={styles['sub-menu-link']}><a href="/construction">Busca e entrega</a></li>
-                        </ul>
+                        <a href="/#services-section">Serviços</a>
                     </li>
                     <li className={color ? styles['menu-link'] : `${styles['menu-link']} ${styles['color-hero']}`}>
                         <p>Comprar</p>
@@ -56,7 +50,6 @@ function Menu() {
                         <ul className={styles['sub-menu-links']}>
                             <li className={styles['sub-menu-link']}><a href="/location">Localização</a></li>
                             <li className={styles['sub-menu-link']}><a href="/photos">Fotos</a></li>
-                            <li className={styles['sub-menu-link']}><a href="/construction">Avaliação na hora</a></li>
                         </ul>
                     </li>
                     <li className={color ? styles['menu-link'] : `${styles['menu-link']} ${styles['color-hero']}`}><a href="/contact">Contato</a></li>

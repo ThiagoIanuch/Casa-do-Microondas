@@ -1,7 +1,7 @@
 .brands-container {   
     width: 100%;
     height: 100%;
-    padding: 0 115px;
+    padding: 25px 115px 0;
     box-sizing: border-box;
 }
 
@@ -34,4 +34,14 @@
 
 .slick-slide div {
     outline: none;
+}
+
+@media (max-width: 1150px) {
+    .brands-container {
+        padding: 25px 50px 0;
+    }
+}
+
+.error-brand{
+    margin-top: 35px;
 }

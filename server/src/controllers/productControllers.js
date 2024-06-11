@@ -18,7 +18,7 @@ exports.get = async (req, res) => {
 exports.add = async (req, res) => {
     const {type, description, price } = req.body;
 
-    const image = '1234.png';
+    const image = req.file.filename;
 
     const SQL = 'INSERT INTO product (type, description, image, price) VALUES (?, ?, ?,?)';
     try {
@@ -55,14 +55,35 @@ exports.update = async (req, res) => {
 
     const {type, description, price} = req.body;
 
-    const SQL = 'UPDATE product SET type = ?, description = ?, price = ? WHERE ID = ?'
+    // Verifica se existe imagem para atualizar
+    let image = req.body.image;
+
+    if (req.file) {
+        image = req.file.filename;
+    }
+
+    const SQL = 'UPDATE product SET type = ?, description = ?, image = ?, price = ? WHERE ID = ?'
 
     try {
-        await db.query(SQL, [type, description, price, id])
+        await db.query(SQL, [type, description, image, price, id])
         return res.status(200).json({msg: 'Produto atualizado com sucesso'}); 
     }
     catch {
-        console.log('err');
         return res.status(400).json({msg: 'Ocorreu um erro ao atualizar o produto'});
+    }
+}
+
+// Obter os produtos do outlet
+exports.getOutlet = async (req, res) => {
+    const SQL = 'SELECT * FROM product ORDER BY RAND() LIMIT 5';
+
+    try {
+        const [result] = await db.query(SQL);
+
+        return res.status(200).json(result);
+    }
+    catch (error) {
+        console.log(error)
+        return res.status(400).json({msg: 'Ocorreu um erro ao obter os produtos.'});
     }
 }

@@ -4,6 +4,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';  
 
 function AdminProducts() {
+    // Alterar o nome da página
+    useEffect(() => {
+        document.title = "Produtos - Área administrador";
+    }, []);
+
     // Obter os dados do produto
     const [products, setProducts] = useState([]);
 
@@ -24,7 +29,7 @@ function AdminProducts() {
             flex: 2,
             renderCell: (params) => (
                 <div className="data-img-container">
-                    <img src={params.value} alt="Brand" className="data-img"/>
+                    <img src={`http://localhost:8080/products-img/${params.value}`} alt="Imagem produto" className="data-img"/>
                 </div>
             ),
         },
@@ -39,7 +44,7 @@ function AdminProducts() {
             flex: 1,
             renderCell: (params) => (
                 <div className="data-action">
-                    <input type="button" value="Editar" className="action-btn edit" onClick={() => editProduct(params.row.id, params.row.type, params.row.description, params.row.price)}></input>
+                    <input type="button" value="Editar" className="action-btn edit" onClick={() => editProduct(params.row.id, params.row.type, params.row.description, params.row.image, params.row.price)}></input>
                     <input type="button" value="Excluir" className="action-btn delete" onClick={() => handleDelete(params.row.id)}></input>
                 </div>
             )
@@ -75,11 +80,16 @@ function AdminProducts() {
         id: '',
         type: '',
         description: '',
+        image: '',
         price: ''
     });
-
+    
     const handleChange = (event) => {
-        setProductData({...productData, [event.target.name]: event.target.value});
+        if (event.target.name === 'image') {
+            setProductData({ ...productData, image: event.target.files[0] });
+        } else {
+            setProductData({ ...productData, [event.target.name]: event.target.value });
+        }
     };
 
     // Abrir o painel modal
@@ -88,13 +98,19 @@ function AdminProducts() {
     // Enviar novos dados
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+    
+        const formData = new FormData();
+        formData.append('id', productData.id);
+        formData.append('type', productData.type);
+        formData.append('description', productData.description);
+        formData.append('image', productData.image);
+        formData.append('price', productData.price);
+    
         try {
-            if(productData.id) {
-                await axios.put(`http://localhost:8080/api/product/update/${productData.id}`, productData);
-            }
-            else {
-                await axios.post('http://localhost:8080/api/product/add', productData);
+            if (productData.id) {
+                await axios.put(`http://localhost:8080/api/product/update/${productData.id}`, formData)
+            } else {
+                await axios.post('http://localhost:8080/api/product/add', formData)
             }
             fetchProducts();
             setOpenModal(false);
@@ -104,8 +120,8 @@ function AdminProducts() {
     };
 
     // Gerenciar modal para editar ou para adicionar
-    const editProduct = (id, type, description, price) => {
-        setProductData({id, type, description, price });
+    const editProduct = (id, type, description, image, price) => {
+        setProductData({id, type, description, image, price });
         setOpenModal(true);
     };
 
@@ -113,7 +129,6 @@ function AdminProducts() {
         setProductData('');
         setOpenModal(true);
     };
-
 
     return (
         <div className="admin-products">
@@ -126,11 +141,27 @@ function AdminProducts() {
             {/* Form para editar/adicionar */}
             <Modal open={openModal} onClose={() => setOpenModal(false)} className="modal-box">
                 <form className="modal-form" onSubmit={handleSubmit}>
+                    <label htmlFor="type" className="modal-label">Tipo</label>
                     <input type="text" placeholder="Tipo" name="type" value={productData.type} onChange={handleChange} className="modal-btn"></input>
+                    
+                    <label htmlFor="description" className="modal-label">Descrição</label>
                     <input type="text" placeholder="Descrição" name="description" value={productData.description} onChange={handleChange} className="modal-btn"></input>
-                    <input type="file" name="file" onChange={handleChange} className="modal-btn"></input>
+                    
+                    <label htmlFor="image" className="modal-label">Foto</label>
+                    <div className="img-container">
+                        <div className="file-container">
+                            <input type="file" name="image" onChange={handleChange} className="input-file"></input>
+                            <p>Arraste ou clique aqui para enviar sua imagem</p>
+                        </div>
+                        <div className="file-container-preview">
+                            <img src={`http://localhost:8080/products-img/${productData.image}`} alt="Imagem produto" className="modal-img"/>
+                        </div>
+                    </div>
+                    
+                    <label htmlFor="price" className="modal-label">Preço</label>
                     <input type="text" placeholder="Preço" name="price" value={productData.price} onChange={handleChange} className="modal-btn"></input>
-                    <input type="submit" value="Salvar" className="modal-btn"></input>
+                    
+                    <input type="submit" value="Confirmar" className="modal-btn-submit"></input>
                 </form>
             </Modal>
         </div>

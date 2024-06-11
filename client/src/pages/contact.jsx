@@ -1,8 +1,14 @@
 import Menu from '../components/menu';
 import Footer from '../components/footer';
 import styles from '../css/forms.module.css';
+import { useEffect } from 'react';
 
 function Contact() {
+    // Alterar o nome da página
+    useEffect(() => {
+        document.title = "Contato - Casa do Microondas";
+    }, []);
+
     return (
         <>
             <Menu />

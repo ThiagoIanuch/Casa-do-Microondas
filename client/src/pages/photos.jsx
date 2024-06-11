@@ -1,8 +1,14 @@
 import Menu from "../components/menu";
 import Footer from "../components/footer";
 import styles from '../css/photos.module.css';
+import { useEffect } from "react";
 
 function Photos() {
+    // Alterar o nome da página
+    useEffect(() => {
+        document.title = "Fotos - Casa do Microondas";
+    }, []);
+
     return (
         <>
             <Menu />

@@ -5,7 +5,7 @@ function LeftMenu() {
     return (
         <div className="left-menu">
             <div className="logo">
-                <img src="/logo.png"></img>
+                <a href="/"><img src="/logo.png"></img></a>
             </div>
 
             <ul className="itens-container">

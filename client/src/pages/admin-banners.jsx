@@ -1,6 +1,12 @@
 import DataTable from "../components/data-table";
+import { useEffect } from "react";
 
 function AdminBanners() {
+    // Alterar o nome da página
+    useEffect(() => {
+        document.title = "Anúncios - Área administrador";
+    }, []);
+    
     const columns = [
         { 
             field: 'id', headerName: 'ID', flex: 0.5

@@ -16,11 +16,15 @@ exports.get = async (req, res) => {
 
 // Adicionar nova marca
 exports.add = async (req, res) => {
-    const {name,image,status} = req.body;
+    const {name,url,status} = req.body;
+
+    const image = req.file.filename;
+
+    const parsedStatus = status === 'true' ? 1 : 0;
     
-    const SQL = 'INSERT INTO brand (name,image,status) VALUES (?, ?, ?)';
+    const SQL = 'INSERT INTO brand (name, url, image, status) VALUES (?, ?, ?, ?)';
     try {
-        await db.query(SQL, [name,image,status]);
+        await db.query(SQL, [name, url, image, parsedStatus]);
 
         return res.status(200).json({msg: 'marca adicionada com sucesso'}); 
     }
@@ -51,16 +55,37 @@ exports.update = async (req, res) => {
 
     const id = req.params.id;
 
-    const {name,image,status} = req.body;
+    const {name,url,status} = req.body;
 
-    const SQL = 'UPDATE brand SET name = ?, image = ?, status = ? WHERE ID = ?'
+    let image = req.body.image;
+
+    // Verifica se existe ícone para atualizar
+    if (req.file) {
+        image = req.file.filename;
+    }
+
+    const parsedStatus = status === 'true' ? 1 : 0;
+
+    const SQL = 'UPDATE brand SET name = ?, url = ?, image = ?, status = ? WHERE ID = ?'
 
     try {
-        await db.query(SQL, [name,image,status,id])
+        await db.query(SQL, [name,url, image, parsedStatus,id])
         return res.status(200).json({msg: 'marca atualizada com sucesso'}); 
     }
     catch {
         console.log('err');
         return res.status(400).json({msg: 'Ocorreu um erro ao atualizar a marca'});
+    }
+}
+
+// Obter serviços para o carousel
+exports.getCarousel = async (req, res) => {
+    const SQL = 'SELECT * FROM brand WHERE status = 1';
+
+    try {
+        const [result] = await db.query(SQL);
+        return res.status(200).json(result);
+    } catch  {
+        return res.status(400).json({msg: 'Ocorreu um erro ao obter os serviços.'});
     }
 }

@@ -1,8 +1,14 @@
 import Menu from '../components/menu.jsx'
 import Footer from '../components/footer.jsx'
 import styles from '../css/forms.module.css'
+import { useEffect } from 'react';
 
 function Login() {
+    // Alterar o nome da página
+    useEffect(() => {
+        document.title = "Entrar - Casa do Microondas";
+    }, []);
+
     return (
         <>
             <Menu></Menu>

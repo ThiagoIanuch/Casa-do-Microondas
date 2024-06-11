@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import LeftMenu from '../components/left-menu.jsx'
-import FooterAdmin from '../components/footer-admin.jsx'
+import LeftMenu from './left-menu.jsx'
+import FooterAdmin from './footer-admin.jsx'
 import '../css/admin-panel.css'
 
 function AdminPanel() {

@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Menu from '../components/menu.jsx'
 import Footer from '../components/footer.jsx';
 import styles from '../css/forms.module.css';
 
 function Register() {
+    // Alterar o nome da página
+    useEffect(() => {
+        document.title = "Registrar - Casa do Microondas";
+    }, []);
+
     // Variáveis para obter os dados do formulário
     const [userData, setUserData] = useState({
         email: '',

@@ -28,11 +28,15 @@ function Footer() {
                         </div>
                         <div className={styles['footer-link']} id={styles['whatsapp']}>
                             <Icon icon="ic:baseline-whatsapp" className={styles['footer-icon']}/>
-                            <p>(41) 98516-3600</p>
+                            <a href="https://wa.me/5541985163600" target='_blank'>(41) 98516-3600</a>
                         </div>
                         <div className={styles['footer-link']} id={styles['whatsapp']}>
                             <Icon icon="ic:baseline-whatsapp" className={styles['footer-icon']}/>
-                            <p>(41) 98516-3602</p>
+                            <a href="https://wa.me/5541985163602" target='_blank'>(41) 98516-3602</a>
+                        </div>
+                        <div className={styles['footer-link']} id={styles['social-links']}>
+                            <a href="https://www.instagram.com/casadomicroondascwb/" target='_blank'><Icon icon="il:instagram" id={styles['instagram']}/></a>
+                            <a href="https://www.facebook.com/casadomicroondascuritiba" target='_blank'><Icon icon="devicon:facebook" id={styles['facebook']} /></a>
                         </div>
                     </div>
                 </div>
@@ -58,7 +62,7 @@ function Footer() {
                             <p>Contate-nos! Buscamos e entregamos seu aparelho </p>
                         </li>
                         <li>
-                            <p>Devido a pandemia do COVID-19 estamos atendendo das 8:30 as 17:30 e a avaliação na hora é feita até as 16h</p>
+                            <p>Estamos atendendo das 8:30 as 17:30 e a avaliação na hora é feita até as 16h</p>
                         </li>
                         <li className={styles['contact-link-container']}>
                             <a href="/contact" className={`${styles['footer-link']} ${styles['contact-link']}`}>
@@ -82,12 +86,6 @@ function Footer() {
                             <div className={`${styles['footer-theme']}`} onClick={() => changeTheme('dark-theme')}>
                                 <Icon icon="ph:moon" />              
                                 <p>Tema escuro</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div className={`${styles['footer-theme']}`} onClick={() => changeTheme('system-theme')}>
-                                <Icon icon="ph:desktop" />                              
-                                <p>Tema do sistema</p>
                             </div>
                         </li>
                     </ul>

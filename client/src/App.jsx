@@ -7,12 +7,13 @@ import Login from './pages/login.jsx';
 import Construction from './pages/construction.jsx';
 import Location from './pages/location.jsx';
 import Contact from './pages/contact.jsx';
-import AdminPanel from './pages/admin-panel.jsx';
+import AdminPanel from './components/admin-panel.jsx';
 import AdminHome from './pages/admin-home.jsx';
 import AdminBanners from './pages/admin-banners.jsx';
 import AdminBrands from './pages/admin-brands.jsx';
 import AdminServices from './pages/admin-services.jsx';
 import AdminProducts from './pages/admin-products.jsx';
+import NotFound from './pages/not-found.jsx'
 
 function App() {
   return (
@@ -26,13 +27,15 @@ function App() {
           <Route path="/construction" element={<Construction/>}></Route>
           <Route path="/location" element={<Location/>}></Route>
           <Route path="/contact" element={<Contact/>}></Route>
+          <Route path="*" element={<NotFound/>} />
           <Route path="/admin-panel/*" element={<AdminPanel/>}>
-            <Route index element={<AdminHome/>} />
+            <Route index element={<Navigate to="home" />} />
+            <Route path="home" element={<AdminHome/>} />
             <Route path="banners" element={<AdminBanners/>} />
             <Route path="brands" element={<AdminBrands/>} />
             <Route path="services" element={<AdminServices/>} />
             <Route path="products" element={<AdminProducts/>} />
-            <Route path="*" element={<Navigate to="/admin-panel" />} />
+            <Route path="*" element={<Navigate to="/admin-panel/home" />} />
           </Route>
         </Routes>
       </BrowserRouter>

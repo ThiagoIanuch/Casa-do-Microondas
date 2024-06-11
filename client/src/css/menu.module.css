@@ -193,3 +193,7 @@
     color: white;
     background-color: var(--color-orange);
 }
+
+.register:hover {
+    background-color: rgb(252, 142, 69);
+}

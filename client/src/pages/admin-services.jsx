@@ -1,14 +1,33 @@
 import DataTable from "../components/data-table";
+import { Modal } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function AdminServices() {
+    // Alterar o nome da página
+    useEffect(() => {
+        document.title = "Serviços - Área administrador";
+    }, []);
+
+    // Obter os serviços
+    const [services, setServices] = useState([]);
+
     const columns = [
         { 
             field: 'id', headerName: 'ID', flex: 0.5
         },
+        {
+            field: 'icon',
+            headerName: 'Icone',
+            flex: 0.5,
+            renderCell: (params) => (
+                <div className="data-img-container">
+                    <img src={`http://localhost:8080/services-img/${params.value}`} alt="Icone serviço" className="data-img"/>
+                </div>
+            ),
+        },
         { 
-            field: 'name', headerName: 'Serviço', flex: 2 
+            field: 'title', headerName: 'Serviço', flex: 2 
         },
         { 
             field: 'description', headerName: 'Descrição', flex: 4 
@@ -24,66 +43,52 @@ function AdminServices() {
             flex: 1,
             renderCell: (params) => (
                 <div className="data-action">
-                    <input type="button" value="Editar" className="action-btn edit" onClick={() => editservice(params.row.id, params.row.type, params.row.description, params.row.price)}></input>
+                    <input type="button" value="Editar" className="action-btn edit" onClick={() => editService(params.row.id, params.row.icon, params.row.title, params.row.description, params.row.status)}></input>
                     <input type="button" value="Excluir" className="action-btn delete" onClick={() => handleDelete(params.row.id)}></input>
                 </div>
             )
         }
     ];
       
-    const [service, setservice] = useState([]);
-
-    const getServices = async() => {
-        try {
-            const resp = await axios.get ("http://localhost:8080/api/service/get")
-            setservice(resp.data)
-        }
-        catch(error) {
-            console.log(error.response.data.msg);
-        }
-    }
-
-    useEffect(() => {
-        getServices()
-        },[])
-    
-    
-
-
     // Adicionar os Serviços existentes
     useEffect(() => {
-        fetchservice();
+        fetchServices();
     }, []);
 
-    const fetchservice = async () => {
+    const fetchServices = async () => {
         try {
             const response = await axios.get('http://localhost:8080/api/service/get'); 
-            setservice(response.data); 
+            setServices(response.data); 
         } catch (error) {
             console.log(error.response.data.msg);
         }
     };
-product
+
     // Deletar o Serviço
     const handleDelete = async (id) => {
         try {
             await axios.delete(`http://localhost:8080/api/service/delete/${id}`);
-            fetchservice();   
+            fetchServices();   
         } catch (error) {
             console.log(error.response.data.msg);
         }
     };
 
     // Editar ou adicionar Serviço
-    const [serviceData, setserviceData] = useState({
+    const [serviceData, setServiceData] = useState({
         id: '',
-        name: '',
+        icon: '',
+        title: '',
         description: '',
-        status: ''
+        status: false
     });
 
     const handleChange = (event) => {
-        setserviceData({...serviceData, [event.target.name]: event.target.value});
+        const { name, type, value, checked, files } = event.target;
+        setServiceData({ 
+            ...serviceData,
+            [name]: type === 'checkbox' ? checked : type === 'file' ? files[0] : value,
+        });
     };
 
     // Abrir o painel modal
@@ -93,14 +98,20 @@ product
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        const formData = new FormData();
+        formData.append('id', serviceData.id);
+        formData.append('icon', serviceData.icon);
+        formData.append('title', serviceData.title);
+        formData.append('description', serviceData.description);
+        formData.append('status', serviceData.status ? 'true' : 'false');
+
         try {
-            if(serviceData.id) {
-                await axios.put(`http://localhost:8080/api/service/update/${serviceData.id}`, serviceData);
+            if (serviceData.id) {
+                await axios.put(`http://localhost:8080/api/service/update/${serviceData.id}`, formData)
+            } else {
+                await axios.post('http://localhost:8080/api/service/add', formData)
             }
-            else {
-                await axios.post('http://localhost:8080/api/service/add', serviceData);
-            }
-            fetchservice();
+            fetchServices();
             setOpenModal(false);
         } catch (error) {
             console.log(error.response.data.msg);
@@ -108,13 +119,19 @@ product
     };
 
     // Gerenciar modal para editar ou para adicionar
-    const editservice = (id, name, description, status) => {
-        setserviceData({id, name, description, status });
+    const editService = (id, icon, title, description, status) => {
+        setServiceData({id, icon, title, description, status });
         setOpenModal(true);
     };
 
-    const addservice = () => {
-        setserviceData('');
+    const addService = () => {
+        setServiceData({
+            id: '',
+            icon: '',
+            title: '',
+            description: '',
+            status: false
+        });
         setOpenModal(true);
     };
 
@@ -122,16 +139,36 @@ product
         <div className="admin-services">
             <div className="info">
                 <h1>Serviços</h1>
-                <button className="action-btn btn-add" onClick={addservice}>Adicionar</button>
+                <button className="action-btn btn-add" onClick={addService}>Adicionar</button>
             </div>
-            <DataTable columns={columns} rows={service}></DataTable>
+            <DataTable columns={columns} rows={services}></DataTable>
             
             {/* Form para editar/adicionar */}
             <Modal open={openModal} onClose={() => setOpenModal(false)} className="modal-box">
                 <form className="modal-form" onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Tipo" name="type" value={serviceData.type} onChange={handleChange} className="modal-btn"></input>
-                    <input type="file" name="file" onChange={handleChange} className="modal-btn"></input>
-                    <input type="submit" value="Salvar" className="modal-btn"></input>
+                    <label htmlFor="icon" className="modal-label">Icone</label>
+                    <div className="img-container">
+                        <div className="file-container">
+                            <input type="file" name="icon" onChange={handleChange} className="input-file"></input>
+                            <p>Arraste ou clique aqui para enviar seu icone</p>
+                        </div>
+                        <div className="file-container-preview">
+                            <img src={`http://localhost:8080/services-img/${serviceData.icon}`} alt="Imagem produto" className="modal-img"/>
+                        </div>
+                    </div>
+
+                    <label htmlFor="type" className="modal-label">Serviço</label>
+                    <input type="text" placeholder="Serviço" name="title" value={serviceData.title} onChange={handleChange} className="modal-btn"></input>
+                    
+                    <label htmlFor="description" className="modal-label">Descrição</label>
+                    <textarea placeholder="Descrição" name="description" value={serviceData.description} onChange={handleChange} className="modal-btn"></textarea>
+                    
+                    <div className="status-modal">
+                        <label htmlFor="status" className="modal-label label-checkbox">Adicionar ao carrosel:  </label>
+                        <input type="checkbox" name="status" checked={serviceData.status} onChange={handleChange} className="modal-checkbox"></input>
+                    </div>
+
+                    <input type="submit" value="Confirmar" className="modal-btn-submit"></input>
                 </form>
             </Modal>
         </div>

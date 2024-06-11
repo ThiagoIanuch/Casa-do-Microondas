@@ -14,6 +14,8 @@ const contactRoutes = require('./routes/contactRoutes.js')
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
+
 
 app.use('/api/user', userRoutes);
 app.use('/api/product', productRoutes);

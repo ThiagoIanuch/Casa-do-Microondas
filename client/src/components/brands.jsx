@@ -46,6 +46,7 @@ function Brands() {
 
   // Adicionar as marcas
   const [brands, setBrands] = useState([]);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     fetchBrands();
@@ -53,10 +54,11 @@ function Brands() {
 
   const fetchBrands = async () => {
       try {
-          const response = await axios.get('http://localhost:8080/api/brand/getCarousel'); 
-          setBrands(response.data); 
+        const response = await axios.get('http://localhost:8080/api/brand/getCarousel'); 
+        setBrands(response.data); 
       } catch (error) {
-          console.log(error.response.data.msg);
+        setError('Nenhuma marca foi encontrada, atualize o site e tente novamente!')
+        console.log(error.response.data.msg);
       }
   };
 
@@ -64,21 +66,24 @@ function Brands() {
     <div className="slider-container">
       <div className="brands-container">
         <h2>Marcas que reparamos</h2>
-        {brands.length === 0 ? (
-          <div className="error-get">
-              <p className="error-brand">Nenhuma marca foi encontrada, atualize o site e tente novamente!</p>
+
+        {error && (
+          <div className="error-get error-brand">
+              <p>{error}</p>
           </div>
-          ) : (
+        )}
+
+        {!error && (
           <Slider {...settings}>
             {brands.map((data, index) => (                              
               <div key={index}>
-                <a href={data.url} target="_blank">
+                <a href={data.url} target="_blank" rel="noopener noreferrer">
                   <img src={`http://localhost:8080/brands-img/${data.image}`} alt={data.name}/>
                 </a>
               </div>
             ))}
           </Slider>
-      )}
+        )}
       </div>
     </div>
   );

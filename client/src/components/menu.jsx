@@ -48,6 +48,7 @@ function Menu() {
                     <li className={color ? styles['menu-link'] : `${styles['menu-link']} ${styles['color-hero']}`}>
                         <p>Informações</p>
                         <ul className={styles['sub-menu-links']}>
+                            <li className={styles['sub-menu-link']}><a href="">Horários</a></li>
                             <li className={styles['sub-menu-link']}><a href="/location">Localização</a></li>
                             <li className={styles['sub-menu-link']}><a href="/photos">Fotos</a></li>
                         </ul>

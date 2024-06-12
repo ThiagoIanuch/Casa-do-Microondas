@@ -4,6 +4,7 @@ import axios from 'axios';
 
 function ProductsOutlet() {
     const [products, setProducts] = useState([]);
+    const [error, setError] = useState('');
 
     // Adicionar os produtos existentes
     useEffect(() => {
@@ -15,6 +16,7 @@ function ProductsOutlet() {
             const response = await axios.get('http://localhost:8080/api/product/getOutlet'); 
             setProducts(response.data); 
         } catch (error) {
+            setError('Nenhum produto foi encontrado, atualize o site e tente novamente!')
             console.log(error.response.data.msg);
         }
     };
@@ -23,15 +25,16 @@ function ProductsOutlet() {
         <div className="products-outlet">
             <h2>Acessórios e Microondas novos</h2>
 
-            {products.length === 0 ? (
+            {error && (
                 <div className="error-get">
-                    <p>Nenhum produto foi encontrado, atualize o site e tente novamente!</p>
+                    <p>{error}</p>
                 </div>
-            ) : (
-                <div className="showcase-container">
-                    {products.map((data, index) => (                              
+            )}
+    
+            <div className="showcase-container">
+                {products.map((data, index) => (                              
+                    <a href="/construction">
                         <div className="product-container" key={index}>
-                            <a href="/construction">
                                 <div className="product-avatar">
                                     <img src={`http://localhost:8080/products-img/${data.image}`} alt="Imagem produto"/>
                                 </div>
@@ -39,11 +42,10 @@ function ProductsOutlet() {
                                 <div className="product-name">{data.description}</div>
 
                                 <div className="product-price">R$ {data.price}</div>
-                            </a>
                         </div>
-                    ))}
-                </div>
-            )}
+                    </a>
+                ))}
+            </div>
         </div>
     );
 }

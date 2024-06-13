@@ -33,8 +33,8 @@ function ProductsOutlet() {
     
             <div className="showcase-container">
                 {products.map((data, index) => (                              
-                    <a href="/construction">
-                        <div className="product-container" key={index}>
+                    <a href="/construction" key={index}>
+                        <div className="product-container">
                                 <div className="product-avatar">
                                     <img src={`http://localhost:8080/products-img/${data.image}`} alt="Imagem produto"/>
                                 </div>

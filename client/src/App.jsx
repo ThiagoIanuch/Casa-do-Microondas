@@ -1,5 +1,6 @@
 import './css/global.css';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { FloatingWhatsApp } from 'react-floating-whatsapp'
 import Index from './pages/index.jsx';
 import Photos from './pages/photos.jsx';
 import Register from './pages/register.jsx';
@@ -18,6 +19,9 @@ import NotFound from './pages/not-found.jsx'
 function App() {
   return (
     <div className="App">
+      { !location.pathname.startsWith('/admin-panel') && 
+        <FloatingWhatsApp phoneNumber="+5541985163600" avatar="avatar-whatsapp.jpg" accountName="Casa do Microondas" statusMessage="Responde em poucos minutos" chatMessage="Olá, como podemos ajudá-lo?" placeholder="Digite uma mensagem"/>
+      }
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index/>}></Route>

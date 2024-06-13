@@ -26,4 +26,6 @@ router.delete('/delete/:id', announcementControllers.delete);
 
 router.put('/update/:id', upload.single('image'), announcementControllers.update)
 
+router.get('/getCarousel/',announcementControllers.getCarousel)
+
 module.exports = router;

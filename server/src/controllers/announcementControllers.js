@@ -75,3 +75,16 @@ exports.update = async (req, res) => {
         return res.status(400).json({msg: 'Ocorreu um erro ao atualizar o anuncio'});
     }
 }
+
+exports.getCarousel = async (req, res) => {
+    const SQL = 'SELECT * FROM announcement WHERE status=1';
+
+    try {
+        const [result] = await db.query(SQL);
+
+        return res.status(200).json(result);
+    }
+    catch {
+        return res.status(400).json({msg: 'Ocorreu um erro ao carregar os anuncios.'});
+    }
+}

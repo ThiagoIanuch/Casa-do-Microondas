@@ -4,17 +4,14 @@ const db = require('../database.js');
 const { body, validationResult } = require('express-validator');
 
 exports.validateContact = [
-    // Validações de email, nome, sobrenome e senha
+    // Validações de email, nome, assunto e mensagem
     body('name')
         .notEmpty().withMessage('Insira seu nome')
-        .isLength({ max: 50 }).withMessage('O nome deve conter no máximo 255 caracteres'),
+        .isLength({ max: 255 }).withMessage('O nome deve conter no máximo 255 caracteres'),
     body('email')
         .notEmpty().withMessage('Insira seu email')
         .isEmail().withMessage('O e-mail deve ser válido')
         .isLength({ max: 255 }).withMessage('O e-mail deve conter no máximo 255 caracteres'),
-    body('phone')
-        .notEmpty().withMessage('Insira seu telefone')
-        .matches(/^\(?\d{2}\)?[\s-]?\d{4,5}[\s-]?\d{4}$/).withMessage('Insira um número de telefone válido'),
     body('subject')
         .notEmpty().withMessage('Insira o assunto')
         .isLength({ max: 255 }).withMessage('O assunto deve conter no máximo 255 caracteres'),
@@ -46,11 +43,11 @@ exports.send = async (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const {name,email,phone,subject,message} = req.body;
+    const {name,email,subject,message} = req.body;
     
-    const SQL = 'CALL SendContact(?, ?, ?, ?, ?)';
+    const SQL = 'CALL SendContact(?, ?, ?, ?)';
     try {
-        await db.query(SQL, [name,email,phone,subject,message]);
+        await db.query(SQL, [name,email,subject,message]);
 
         return res.status(200).json({msg: 'contato adicionado com sucesso'}); 
     }

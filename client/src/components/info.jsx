@@ -10,7 +10,7 @@ function Info() {
                 <p className="info-item">Seg a Sex das 08h30 às 17h30 e Sab das 09h às 13h.</p>
                 <p className="info-item">A avaliação na hora é feita até às 16h.</p>
             </div>
-            <div class="locations-container">
+            <div className="locations-container">
                 <Icon icon="mdi:address-marker" className="info-icon icon-address"/>
                 <h4>Endereço</h4>
                 <a href="/location" className="info-link">Loja 1 - Avenida Presidente Kennedy 410, Rebouças - Curitiba</a>

@@ -40,6 +40,12 @@ function LeftMenu() {
                     </Link>
                 </li>
                 <li className="item">
+                    <Link to="/admin-panel/service-orders" className="item-link">
+                        <Icon icon="clarity:clipboard-solid" className="icon-size"/>                        
+                        <span>Ordens de serviço</span>
+                    </Link>
+                </li>
+                <li className="item">
                     <Link to="/admin-panel/contacts" className="item-link">
                         <Icon icon="ic:sharp-email" className="icon-size"/>                        
                         <span>Contatos</span>

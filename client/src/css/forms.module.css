@@ -73,6 +73,6 @@
     cursor: pointer;
 }
 
-.contact {
+.contact, .service-order {
     max-width: 450px;
 }

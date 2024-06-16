@@ -7,6 +7,7 @@ import Register from './pages/register.jsx';
 import Login from './pages/login.jsx';
 import Construction from './pages/construction.jsx';
 import Location from './pages/location.jsx';
+import ServiceOrder from './pages/service-order.jsx'
 import Contact from './pages/contact.jsx';
 import AdminPanel from './components/admin-panel.jsx';
 import AdminHome from './pages/admin-home.jsx';
@@ -14,6 +15,7 @@ import AdminBanners from './pages/admin-banners.jsx';
 import AdminBrands from './pages/admin-brands.jsx';
 import AdminServices from './pages/admin-services.jsx';
 import AdminProducts from './pages/admin-products.jsx';
+import AdminOrders from './pages/admin-orders.jsx';
 import AdminContacts from './pages/admin-contacts.jsx';
 import NotFound from './pages/not-found.jsx'
 
@@ -31,6 +33,7 @@ function App() {
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/construction" element={<Construction/>}></Route>
           <Route path="/location" element={<Location/>}></Route>
+          <Route path="/service-order" element={<ServiceOrder/>}></Route>
           <Route path="/contact" element={<Contact/>}></Route>
           <Route path="*" element={<NotFound/>} />
           <Route path="/admin-panel/*" element={<AdminPanel/>}>
@@ -40,6 +43,7 @@ function App() {
             <Route path="brands" element={<AdminBrands/>} />
             <Route path="services" element={<AdminServices/>} />
             <Route path="products" element={<AdminProducts/>} />
+            <Route path="service-orders" element={<AdminOrders/>} />
             <Route path="contacts" element={<AdminContacts/>} />
             <Route path="*" element={<Navigate to="/admin-panel/home" />} />
           </Route>

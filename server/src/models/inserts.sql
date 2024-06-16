@@ -1,6 +1,14 @@
 -- --------------------------------------------------------
 
 --
+-- Usar o banco de dados para evitar erros
+--
+
+USE CasaMicroondas;
+
+-- --------------------------------------------------------
+
+--
 -- Adicionar dados para a tabela `announcement`
 --
 
@@ -33,8 +41,8 @@ INSERT INTO `brand` (`id`, `name`, `url`, `image`, `status`) VALUES
 -- Adicionar dados para a tabela `contact`
 --
 
-INSERT INTO `contact` (`id`, `name`, `email`, `phone`, `subject`, `message`) VALUES
-(1, 'Admin Microondas', 'admin@casamicroondas.com', '(41) 98516-3600', 'Teste do formulário', 'Mensagem de teste para testar o formulário de contato');
+INSERT INTO `contact` (`id`, `name`, `email`, `subject`, `message`) VALUES
+(1, 'Admin Microondas', 'admin@casamicroondas.com', 'Teste do formulário', 'Mensagem de teste para testar o formulário de contato');
 
 -- --------------------------------------------------------
 
@@ -75,4 +83,14 @@ INSERT INTO `service` (`id`, `icon`, `title`, `description`, `status`) VALUES
 --
 
 INSERT INTO `user` (`id`, `email`, `first_name`, `last_name`, `password`) VALUES
-(1, 'admin@casamicroondas.com', 'Admin', 'Microondas', '$2b$08$fL9NUS1gcZLyMQExZIQwduFZApnL1H9ui1uUHHIhR3PYjJZ7BXJ1.');
+(1, 'admin@casamicroondas.com', 'Admin', 'Microondas', '$2b$08$fL9NUS1gcZLyMQExZIQwduFZApnL1H9ui1uUHHIhR3PYjJZ7BXJ1.'),
+(2, 'clienteteste@gmail.com', 'Cliente', 'Teste', '$2b$08$RlvdyHvQxI3Dgo3jkTsR0eZlYXfRbyRsK7GkRUt734XyZtfBQ69y6');
+
+-- --------------------------------------------------------
+
+--
+-- Adicionar dados para a tabela `service_order`
+--
+
+INSERT INTO `service_order` (`id`, `user_id`, `phone`, `type`, `brand_id`, `model`, `description`) VALUES
+(1, 1, '(41) 98516-3600', 'Microondas', 9, 'Teste modelo', 'Abertura de uma O.S de teste para testar o formulário de envio de ordens de serviço!');

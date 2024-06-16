@@ -3,6 +3,11 @@ import axios from 'axios';
 import DataTable from "../components/data-table";
 
 function AdminContacts() {
+    // Alterar o nome da página
+    useEffect(() => {
+        document.title = "Contatos - Área administrador";
+    }, []);
+
     // Dados da tabela
     const columns = [
         { field: 'id', headerName: 'ID', flex: 0.5 },

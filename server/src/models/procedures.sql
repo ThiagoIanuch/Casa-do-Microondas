@@ -1,4 +1,12 @@
 -- --------------------------------------------------------
+
+--
+-- Usar o banco de dados para evitar erros
+--
+
+USE CasaMicroondas;
+
+-- --------------------------------------------------------
 --
 -- Procedimentos para a tabela `announcement`
 --
@@ -148,13 +156,12 @@ DELIMITER //
 CREATE PROCEDURE SendContact(
     IN p_name VARCHAR(255),
     IN p_email VARCHAR(255),
-    IN p_phone VARCHAR(15),
     IN p_subject VARCHAR(255),
     IN p_message VARCHAR(5000)
 )
 BEGIN
-    INSERT INTO contact (name, email, phone, subject, message)
-    VALUES (p_name, p_email, p_phone, p_subject, p_message);
+    INSERT INTO contact (name, email, subject, message)
+    VALUES (p_name, p_email, p_subject, p_message);
 END //
 
 DELIMITER ;
@@ -289,15 +296,34 @@ DELIMITER $$
 
 -- --------------------------------------------------------
 --
--- Procedimentos para a tabela de `user`
+-- Procedimentos para a tabela de `service-order`
 --
 
-CREATE PROCEDURE CheckEmail(IN emailToCheck VARCHAR(255), OUT emailExists INT)
+DELIMITER //
+
+CREATE PROCEDURE `GetServiceOrders`()
 BEGIN
-    SELECT COUNT(*)
-    INTO emailExists
-    FROM user
-    WHERE email = emailToCheck;
-END$$
+    SELECT s.id, u.first_name, u.last_name, s.phone, s.type, b.name, s.model, s.description FROM service_order s 
+    INNER JOIN brand b ON s.brand_id = b.id 
+    INNER JOIN user u 
+    ON s.user_id = u.id;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE `SendServiceOrder`(
+    IN p_userID INT,
+    IN p_phone VARCHAR(15),
+    IN p_type VARCHAR(50),
+    IN p_brand INT,
+    IN p_model VARCHAR(50),
+    IN p_description VARCHAR(5000)
+)
+BEGIN
+    INSERT INTO service_order (user_id, phone, type, brand_id, model, description)
+    VALUES (p_userID, p_phone, p_type, p_brand, p_model, p_description);
+END //
 
 DELIMITER ;

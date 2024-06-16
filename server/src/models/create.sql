@@ -4,9 +4,9 @@
 -- Criar o banco de dados `casa_microondas` e utilizar ele
 --
 
-CREATE DATABASE casa_microondas;
+CREATE DATABASE CasaMicroondas;
 
-USE casa_microondas;
+USE CasaMicroondas;
 
 -- --------------------------------------------------------
 
@@ -18,7 +18,7 @@ CREATE TABLE `announcement` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `image` VARCHAR(255) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
-  `status` TINYINT(1) NOT NULL DEFAULT '0'
+  `status` TINYINT NOT NULL DEFAULT '0'
 );
 
 -- --------------------------------------------------------
@@ -32,7 +32,7 @@ CREATE TABLE `brand` (
   `name` VARCHAR(100) NOT NULL,
   `url` VARCHAR(255) NOT NULL,
   `image` VARCHAR(255) NOT NULL,
-  `status` TINYINT(1) NOT NULL DEFAULT '0'
+  `status` TINYINT NOT NULL DEFAULT '0'
 );
 
 -- --------------------------------------------------------
@@ -45,7 +45,6 @@ CREATE TABLE `contact` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
-  `phone` VARCHAR(15) NOT NULL,
   `subject` VARCHAR(255) NOT NULL,
   `message` VARCHAR(5000)  NOT NULL
 );
@@ -75,7 +74,24 @@ CREATE TABLE `service` (
   `icon` VARCHAR(255) NOT NULL,
   `title` VARCHAR(255) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
-  `status` TINYINT(1) NOT NULL DEFAULT '0'
+  `status` TINYINT NOT NULL DEFAULT '0'
+);
+
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `service_order`
+--
+
+CREATE TABLE service_order (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `user_id` int NOT NULL,
+  `phone` VARCHAR(15) NOT NULL,
+  `type` VARCHAR(50) NOT NULL,
+  `brand_id` int NOT NULL,
+  `model` VARCHAR(50) NOT NULL,
+  `description` VARCHAR(5000) NOT NULL
 );
 
 -- --------------------------------------------------------
@@ -91,3 +107,15 @@ CREATE TABLE `user` (
   `last_name` VARCHAR(100) NOT NULL,
   `password` VARCHAR(60) NOT NULL
 );
+
+-- --------------------------------------------------------
+
+--
+-- Adicionar chaves estrangeiras na tabela `service_order`
+--
+
+ALTER TABLE `service_order`
+ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user`(`id`);
+
+ALTER TABLE `service_order`
+ADD CONSTRAINT `fk_brand_id` FOREIGN KEY (`brand_id`) REFERENCES `brand`(`id`);

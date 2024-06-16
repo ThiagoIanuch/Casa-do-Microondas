@@ -2,12 +2,12 @@ const db = require('../database.js');
 
 // Obter as marcas
 exports.get = async (req, res) => {
-    const SQL = 'SELECT * FROM brand';
+    const SQL = 'CALL GetBrands()';
 
     try {
         const [result] = await db.query(SQL);
 
-        return res.status(200).json(result);
+        return res.status(200).json(result[0]);
     }
     catch {
         return res.status(400).json({msg: 'Ocorreu um erro ao carregar as marcas.'});
@@ -22,7 +22,7 @@ exports.add = async (req, res) => {
 
     const parsedStatus = status === 'true' ? 1 : 0;
     
-    const SQL = 'INSERT INTO brand (name, url, image, status) VALUES (?, ?, ?, ?)';
+    const SQL = 'CALL AddBrand(?, ?, ?, ?)';
     try {
         await db.query(SQL, [name, url, image, parsedStatus]);
 
@@ -35,7 +35,7 @@ exports.add = async (req, res) => {
 
 // Deletar marca
 exports.delete = async (req, res) => {
-    const SQL = 'DELETE FROM brand WHERE id = ?';
+    const SQL = 'CALL DeleteBrand(?)';
 
     const id = req.params.id;
 
@@ -65,10 +65,10 @@ exports.update = async (req, res) => {
 
     const parsedStatus = status === 'true' ? 1 : 0;
 
-    const SQL = 'UPDATE brand SET name = ?, url = ?, image = ?, status = ? WHERE ID = ?'
+    const SQL = 'CALL UpdateBrand(?, ?, ?, ?, ?)'
 
     try {
-        await db.query(SQL, [name,url, image, parsedStatus,id])
+        await db.query(SQL, [id, name,url, image, parsedStatus])
         return res.status(200).json({msg: 'marca atualizada com sucesso'}); 
     }
     catch {
@@ -78,11 +78,11 @@ exports.update = async (req, res) => {
 
 // Obter serviços para o carousel
 exports.getCarousel = async (req, res) => {
-    const SQL = 'SELECT * FROM brand WHERE status = 1';
+    const SQL = 'CALL GetActiveBrands()';
 
     try {
         const [result] = await db.query(SQL);
-        return res.status(200).json(result);
+        return res.status(200).json(result[0]);
     } catch  {
         return res.status(400).json({msg: 'Ocorreu um erro ao obter os serviços.'});
     }

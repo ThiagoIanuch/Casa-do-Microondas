@@ -73,7 +73,12 @@ function Brands() {
           </div>
         )}
 
-        {!error && (
+        {!error && brands.length <= 0 && (
+            <div className="error-get error-brand error-div"></div>
+          )
+        }
+
+        {!error && brands.length > 0 && (
           <Slider {...settings}>
             {brands.map((data, index) => (                              
               <div key={index}>

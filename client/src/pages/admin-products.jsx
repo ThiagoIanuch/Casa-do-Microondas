@@ -126,7 +126,13 @@ function AdminProducts() {
     };
 
     const addProduct = () => {
-        setProductData('');
+        setProductData({
+            id: '',
+            type: '',
+            description: '',
+            image: '',
+            price: ''
+        });
         setOpenModal(true);
     };
 

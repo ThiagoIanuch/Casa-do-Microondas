@@ -35,7 +35,8 @@ function Footer() {
                             <a href="https://wa.me/5541985163602" target='_blank'>(41) 98516-3602</a>
                         </div>
                         <div className={styles['footer-link']} id={styles['social-links']}>
-                            <a href="https://www.instagram.com/casadomicroondascwb/" target='_blank'><Icon icon="il:instagram" id={styles['instagram']}/></a>
+                            <a href="/contact"><Icon icon="ic:sharp-email" id={styles['email']} /></a>
+                            <a href="https://www.instagram.com/casadomicroondascwb/" target='_blank'><Icon icon="skill-icons:instagram" id={styles['instagram']}/></a>
                             <a href="https://www.facebook.com/casadomicroondascuritiba" target='_blank'><Icon icon="devicon:facebook" id={styles['facebook']} /></a>
                         </div>
                     </div>
@@ -59,14 +60,17 @@ function Footer() {
                             <h3>Peça já seu orçamento</h3>
                         </li>
                         <li>
-                            <p>Contate-nos! Buscamos e entregamos seu aparelho </p>
+                            <p>Abra um pré-os em nosso site! Buscamos e entregamos seu aparelho </p>
                         </li>
                         <li>
-                            <p>Estamos atendendo das 8:30 as 17:30 e a avaliação na hora é feita até as 16h</p>
+                            <p>Estamos atendendo de Seg a Sex das 08h30 às 17h30 e Sab das 09h às 13h</p>
+                        </li>
+                        <li>
+                            <p>A avaliação na hora é feita até às 16h.</p>
                         </li>
                         <li className={styles['contact-link-container']}>
                             <a href="/contact" className={`${styles['footer-link']} ${styles['contact-link']}`}>
-                                Entre em contato
+                                Abra sua pré-os
                             </a>
                         </li>
                     </ul>

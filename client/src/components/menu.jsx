@@ -48,16 +48,16 @@ function Menu() {
                     <li className={color ? styles['menu-link'] : `${styles['menu-link']} ${styles['color-hero']}`}>
                         <p>Informações</p>
                         <ul className={styles['sub-menu-links']}>
-                            <li className={styles['sub-menu-link']}><a href="">Horários</a></li>
+                            <li className={styles['sub-menu-link']}><a href="/#info-section">Horários</a></li>
                             <li className={styles['sub-menu-link']}><a href="/location">Localização</a></li>
                             <li className={styles['sub-menu-link']}><a href="/photos">Fotos</a></li>
                         </ul>
                     </li>
                     <li className={color ? styles['menu-link'] : `${styles['menu-link']} ${styles['color-hero']}`}><a href="/contact">Contato</a></li>
                 </ul>
-                <div className={color ? styles['search-icon'] : `${styles['search-icon']} ${styles['color-hero']}`}>
+                {/*<div className={color ? styles['search-icon'] : `${styles['search-icon']} ${styles['color-hero']}`}>
                     <Icon icon="ic:baseline-search" />
-                </div>
+                </div>*/}
             </nav>
 
             <div className={styles['login-container']}>

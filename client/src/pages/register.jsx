@@ -45,6 +45,14 @@ function Register() {
         try {
             const response = await axios.post('http://localhost:8080/api/user/register', userData)
             setErrorMessages([]);
+            alert('Registrado com sucesso, faça seu login')
+            setUserData({
+                email: '',
+                firstName: '',
+                lastName: '',
+                password: '',
+                confirmPassword: ''
+            });
         } catch (error) {
             setErrorMessages(error.response.data.errors);
         }
@@ -59,22 +67,22 @@ function Register() {
                     <div className={styles['form-title']}>Registrar</div>
 
                     <form onSubmit={handleSubmit}>
-                        <input type="text" className={styles['form-input']} name="email" autoComplete="email" placeholder="E-mail" onChange={handleChange} ></input>
+                        <input type="text" className={styles['form-input']} name="email" autoComplete="email" placeholder="E-mail" value={userData.email} onChange={handleChange} />
                         {renderErrorMessages('email')}
 
-                        <input type="text" className={styles['form-input']} name="firstName" autoComplete="given-name" placeholder="Primeiro nome" onChange={handleChange}></input>
+                        <input type="text" className={styles['form-input']} name="firstName" autoComplete="given-name" placeholder="Primeiro nome" value={userData.firstName} onChange={handleChange} />
                         {renderErrorMessages('firstName')}
 
-                        <input type="text" className={styles['form-input']} name="lastName" autoComplete="family-name" placeholder="Sobrenome" onChange={handleChange}></input>
+                        <input type="text" className={styles['form-input']} name="lastName" autoComplete="family-name" placeholder="Sobrenome" value={userData.lastName} onChange={handleChange} />
                         {renderErrorMessages('lastName')}
             
-                        <input type="password" className={styles['form-input']} name="password" autoComplete="new-password" placeholder="Senha" onChange={handleChange}></input>
+                        <input type="password" className={styles['form-input']} name="password" autoComplete="new-password" placeholder="Senha" value={userData.password} onChange={handleChange} />
                         {renderErrorMessages('password')}
 
-                        <input type="password" className={styles['form-input']} name="confirmPassword" autoComplete="new-password" placeholder="Confirmar a senha" onChange={handleChange}></input>
+                        <input type="password" className={styles['form-input']} name="confirmPassword" autoComplete="new-password" placeholder="Confirmar a senha" value={userData.confirmPassword} onChange={handleChange} />
                         {renderErrorMessages('confirmPassword')}
 
-                        <input type="submit" className={styles['submit-btn']} value="Registrar"></input>
+                        <input type="submit" className={styles['submit-btn']} value="Registrar" />
                     </form>
                 </div>
             </div>

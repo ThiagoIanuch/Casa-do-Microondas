@@ -14,6 +14,7 @@ import AdminBanners from './pages/admin-banners.jsx';
 import AdminBrands from './pages/admin-brands.jsx';
 import AdminServices from './pages/admin-services.jsx';
 import AdminProducts from './pages/admin-products.jsx';
+import AdminContacts from './pages/admin-contacts.jsx';
 import NotFound from './pages/not-found.jsx'
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
             <Route path="brands" element={<AdminBrands/>} />
             <Route path="services" element={<AdminServices/>} />
             <Route path="products" element={<AdminProducts/>} />
+            <Route path="contacts" element={<AdminContacts/>} />
             <Route path="*" element={<Navigate to="/admin-panel/home" />} />
           </Route>
         </Routes>

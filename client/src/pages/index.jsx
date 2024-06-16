@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from '../components/menu.jsx';
 import Hero from '../components/hero.jsx';
+import Info from '../components/info.jsx'
 import Announcements from '../components/announcements.jsx';
 import Brands from '../components/brands.jsx';
 import Services from '../components/services.jsx';
@@ -22,7 +23,13 @@ function Index() {
         if (location.hash === '#services-section') {
             const element = document.getElementById('services-section');
             if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+                element.scrollIntoView({ behavior: 'smooth'});
+            }
+        }
+        else if (location.hash === '#info-section') {
+            const element = document.getElementById('info-section');
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
     }, [location]);
@@ -32,6 +39,9 @@ function Index() {
             <Menu />
             <Hero />
             <Announcements />
+            <div id="info-section">
+                <Info />
+            </div>
             <Brands /> {/* Renderiza o Slider */}
             <div id="services-section">
                 <Services />

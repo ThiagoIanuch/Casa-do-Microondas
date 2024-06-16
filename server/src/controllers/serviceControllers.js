@@ -3,11 +3,11 @@ const db = require('../database.js');
 
 // Obter os serviços
 exports.get = async (req, res) => {
-    const SQL = 'SELECT * FROM service';
+    const SQL = 'CALL GetServices()';
 
     try {
         const [result] = await db.query(SQL);
-        return res.status(200).json(result);
+        return res.status(200).json(result[0]);
     } catch  {
         return res.status(400).json({msg: 'Ocorreu um erro ao obter os serviços.'});
     }
@@ -21,7 +21,7 @@ exports.add = async (req, res) => {
 
     const parsedStatus = status === 'true' ? 1 : 0;
 
-    const SQL = 'INSERT INTO service (icon, title, description, status) VALUES (?, ?, ?, ?)';
+    const SQL = 'CALL AddService(?, ?, ?, ?)';
     
     try {
         await db.query(SQL, [icon, title, description, parsedStatus]);
@@ -35,7 +35,7 @@ exports.add = async (req, res) => {
 
 // Deletar serviço
 exports.delete = async (req, res) => {
-    const SQL = 'DELETE FROM service WHERE id = ?';
+    const SQL = 'CALL DeleteService(?)';
 
     const id = req.params.id;
 
@@ -65,10 +65,10 @@ exports.update = async (req, res) => {
 
     const parsedStatus = status === 'true' ? 1 : 0;
 
-    const SQL = 'UPDATE service SET icon = ?, title = ?, description = ?, status = ? WHERE ID = ?';
+    const SQL = 'CALL UpdateService(?, ?, ?, ?, ?)';
 
     try {
-        await db.query(SQL, [icon, title, description, parsedStatus, id])
+        await db.query(SQL, [id, icon, title, description, parsedStatus])
         return res.status(200).json({msg: 'serviço atualizado com sucesso'}); 
     }
     catch {
@@ -78,11 +78,11 @@ exports.update = async (req, res) => {
 
 // Obter serviços para o carousel
 exports.getCarousel = async (req, res) => {
-    const SQL = 'SELECT * FROM service WHERE status = 1';
+    const SQL = 'CALL GetActiveServices()';
 
     try {
         const [result] = await db.query(SQL);
-        return res.status(200).json(result);
+        return res.status(200).json(result[0]);
     } catch  {
         return res.status(400).json({msg: 'Ocorreu um erro ao obter os serviços.'});
     }

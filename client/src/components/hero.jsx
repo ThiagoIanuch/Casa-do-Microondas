@@ -19,7 +19,7 @@ function Hero() {
                     <h1>Casa do Microondas</h1>
                 </div>
                 <div className={styles['hero-content']}>
-                    <button className={styles['hero-button']} onClick={scrollPage}>Conheça nossos serviços</button>
+                    <button className={styles['hero-button']} onClick={scrollPage}>Reparamos seu Microondas em 30 minutos</button>
                 </div>
             </div>
 

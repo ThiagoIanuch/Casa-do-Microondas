@@ -1,66 +1,60 @@
 const db = require('../database.js');
 
+// Validar o form
+const { body, validationResult } = require('express-validator');
+
+exports.validateContact = [
+    // Validações de email, nome, sobrenome e senha
+    body('name')
+        .notEmpty().withMessage('Insira seu nome')
+        .isLength({ max: 50 }).withMessage('O nome deve conter no máximo 255 caracteres'),
+    body('email')
+        .notEmpty().withMessage('Insira seu email')
+        .isEmail().withMessage('O e-mail deve ser válido')
+        .isLength({ max: 255 }).withMessage('O e-mail deve conter no máximo 255 caracteres'),
+    body('phone')
+        .notEmpty().withMessage('Insira seu telefone')
+        .matches(/^\(?\d{2}\)?[\s-]?\d{4,5}[\s-]?\d{4}$/).withMessage('Insira um número de telefone válido'),
+    body('subject')
+        .notEmpty().withMessage('Insira o assunto')
+        .isLength({ max: 255 }).withMessage('O assunto deve conter no máximo 255 caracteres'),
+    body('message')
+        .notEmpty().withMessage('Insira a mensagem')
+        .isLength({ max: 5000 }).withMessage('A mensagem deve ter no máximo 5000 caracteres'),
+];
+
 // Obter os contatos
 exports.get = async (req, res) => {
-    const SQL = 'SELECT * FROM contact';
+    const SQL = 'CALL GetContacts()';
 
     try {
         const [result] = await db.query(SQL);
 
-        return res.status(200).json(result);
+        return res.status(200).json(result[0]);
     }
     catch {
         return res.status(400).json({msg: 'Ocorreu um erro ao carregar os contatos.'});
     }
 }
 
-// Adicionar novo contato
-exports.add = async (req, res) => {
+// Enviar dados do contato
+exports.send = async (req, res) => {
+    // Retorna se houver erros
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     const {name,email,phone,subject,message} = req.body;
     
-    const SQL = 'INSERT INTO contact (name,email,phone,subject,message) VALUES (?, ?, ?, ?, ?)';
+    const SQL = 'CALL SendContact(?, ?, ?, ?, ?)';
     try {
         await db.query(SQL, [name,email,phone,subject,message]);
 
         return res.status(200).json({msg: 'contato adicionado com sucesso'}); 
     }
-    catch (error){
-        console.log(error);
+    catch {
         return res.status(400).json({msg: 'Erro ao adicionar contato'}); 
-    }
-}
-
-// Deletar contato
-exports.delete = async (req, res) => {
-    const SQL = 'DELETE FROM contact WHERE id = ?';
-
-    const id = req.params.id;
-
-    try {
-        await db.query(SQL, [id]);
-
-        return res.status(200).json({msg: 'contato deletado com sucesso'}); 
-    }
-    catch {
-        return res.status(400).json({msg: 'Ocorreu um erro ao deletar o contato'});
-    }
-}
-
-// Atualizar contato
-exports.update = async (req, res) => {
-
-    const id = req.params.id;
-
-    const {name,email,phone,subject,message} = req.body;
-
-    const SQL = 'UPDATE contact SET name = ?, email = ?, phone = ?, subject = ?, message = ?, WHERE ID = ?'
-
-    try {
-        await db.query(SQL, [name,email,phone,subject,message,id])
-        return res.status(200).json({msg: 'contato atualizado com sucesso'}); 
-    }
-    catch {
-        console.log('err');
-        return res.status(400).json({msg: 'Ocorreu um erro ao atualizar o contato'});
     }
 }

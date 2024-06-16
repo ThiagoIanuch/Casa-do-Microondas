@@ -21,6 +21,10 @@ footer {
     color: var(--color-font);
 }
 
+.footer-list p {
+    line-height: 1.3;
+}
+
 #footer-numbers {
     display: flex;
     flex-direction: column;
@@ -161,19 +165,13 @@ footer {
     gap: 10px;
 }
 
-#instagram {
-    color: white!important;
-    padding: 2px 4px 0 3px;
-    background: #f09433; 
-    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
-    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
 #facebook {
     font-size: 30px;
+}
+
+#email {
+    font-size: 37px;
+    color: #f55b50;;
 }
 
 /* Adicionar responsabilidade */

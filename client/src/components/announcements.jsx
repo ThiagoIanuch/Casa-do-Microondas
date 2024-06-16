@@ -26,7 +26,6 @@ function Announcements() {
         slidesToScroll: 1,
         arrows: false,
         autoplay: true,
-        speed: 500,
         autoplaySpeed: 5000,
         initialSlide: 1
     };

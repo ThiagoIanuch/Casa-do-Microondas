@@ -39,6 +39,12 @@ function LeftMenu() {
                         <span>Produtos</span>
                     </Link>
                 </li>
+                <li className="item">
+                    <Link to="/admin-panel/contacts" className="item-link">
+                        <Icon icon="ic:sharp-email" className="icon-size"/>                        
+                        <span>Contatos</span>
+                    </Link>
+                </li>
             </ul>
         </div>
     )

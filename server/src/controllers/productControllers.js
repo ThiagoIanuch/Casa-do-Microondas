@@ -2,12 +2,12 @@ const db = require('../database.js');
 
 // Obter os produtos
 exports.get = async (req, res) => {
-    const SQL = 'SELECT * FROM product';
+    const SQL = 'CALL GetProducts()';
 
     try {
         const [result] = await db.query(SQL);
 
-        return res.status(200).json(result);
+        return res.status(200).json(result[0]);
     }
     catch {
         return res.status(400).json({msg: 'Ocorreu um erro ao obter os produtos.'});
@@ -20,7 +20,7 @@ exports.add = async (req, res) => {
 
     const image = req.file.filename;
 
-    const SQL = 'INSERT INTO product (type, description, image, price) VALUES (?, ?, ?,?)';
+    const SQL = 'CALL AddProduct(?, ?, ?, ?)';
     try {
         await db.query(SQL, [type, description, image, price]);
 
@@ -33,7 +33,7 @@ exports.add = async (req, res) => {
 
 // Deletar produto
 exports.delete = async (req, res) => {
-    const SQL = 'DELETE FROM product WHERE id = ?';
+    const SQL = 'CALL DeleteProduct(?)';
 
     const id = req.params.id;
 
@@ -61,10 +61,10 @@ exports.update = async (req, res) => {
         image = req.file.filename;
     }
 
-    const SQL = 'UPDATE product SET type = ?, description = ?, image = ?, price = ? WHERE ID = ?'
+    const SQL = 'CALL UpdateProduct(?, ?, ?, ?, ?)'
 
     try {
-        await db.query(SQL, [type, description, image, price, id])
+        await db.query(SQL, [id, type, description, image, price])
         return res.status(200).json({msg: 'Produto atualizado com sucesso'}); 
     }
     catch {
@@ -74,12 +74,12 @@ exports.update = async (req, res) => {
 
 // Obter os produtos do outlet
 exports.getOutlet = async (req, res) => {
-    const SQL = 'SELECT * FROM product ORDER BY RAND() LIMIT 5';
+    const SQL = 'CALL GetRandomProducts()';
 
     try {
         const [result] = await db.query(SQL);
 
-        return res.status(200).json(result);
+        return res.status(200).json(result[0]);
     }
     catch {
         return res.status(400).json({msg: 'Ocorreu um erro ao obter os produtos.'});

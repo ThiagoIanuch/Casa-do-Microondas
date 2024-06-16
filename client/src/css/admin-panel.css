@@ -244,7 +244,7 @@ a {
     letter-spacing: 0.8px;
 }
 
-.content-container, .admin-products, .admin-services, .admin-brands, .admin-announcements {
+.content-container, .admin-products, .admin-services, .admin-brands, .admin-announcements, .admin-contacts {
     overflow-x: auto;
 }
 

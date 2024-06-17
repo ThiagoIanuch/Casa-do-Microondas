@@ -307,6 +307,10 @@
         height: 160px!important;
     }
 
+    .responsive-buy p, .responsive-info p {
+        cursor:default;
+    }
+
     .sub-menu-links {
         padding-left: 30px;
         margin-top: -10px;

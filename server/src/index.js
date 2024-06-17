@@ -9,11 +9,17 @@ const serviceRoutes = require('./routes/serviceRoutes.js');
 const brandRoutes = require('./routes/brandRoutes.js');
 const announcementRoutes = require('./routes/announcementRoutes.js');
 const serviceOrderRoutes = require('./routes/serviceOrderRoutes.js')
-const contactRoutes = require('./routes/contactRoutes.js')
+const contactRoutes = require('./routes/contactRoutes.js');
+
+// Configurar o CORS para permitir cookies  
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    credentials: true
+};
 
 // Iniciar o servidor e chamar as rotas
 const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.static('public'));
 

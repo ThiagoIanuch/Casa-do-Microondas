@@ -82,9 +82,9 @@ INSERT INTO `service` (`id`, `icon`, `title`, `description`, `status`) VALUES
 -- Adicionar dados para a tabela `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `first_name`, `last_name`, `password`) VALUES
-(1, 'admin@casamicroondas.com', 'Admin', 'Microondas', '$2b$08$fL9NUS1gcZLyMQExZIQwduFZApnL1H9ui1uUHHIhR3PYjJZ7BXJ1.'),
-(2, 'clienteteste@gmail.com', 'Cliente', 'Teste', '$2b$08$RlvdyHvQxI3Dgo3jkTsR0eZlYXfRbyRsK7GkRUt734XyZtfBQ69y6');
+INSERT INTO `user` (`id`, `email`, `first_name`, `last_name`, `password`, `admin`) VALUES
+(1, 'admin@casamicroondas.com', 'Admin', 'Microondas', '$2b$08$fL9NUS1gcZLyMQExZIQwduFZApnL1H9ui1uUHHIhR3PYjJZ7BXJ1.', 0),
+(2, 'clienteteste@gmail.com', 'Cliente', 'Teste', '$2b$08$RlvdyHvQxI3Dgo3jkTsR0eZlYXfRbyRsK7GkRUt734XyZtfBQ69y6', 0);
 
 -- --------------------------------------------------------
 

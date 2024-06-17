@@ -59,6 +59,7 @@
     position: absolute;
     font-family: sans-serif;
     font-size: 0.80rem;
+    margin-top: 3px;
 }
 
 .submit-btn {

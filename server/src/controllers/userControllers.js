@@ -1,9 +1,10 @@
 const db = require('../database.js');
 const bcrypt = require('bcrypt');
 const { body, validationResult } = require('express-validator');
+const jwt = require('jsonwebtoken');
 
+// Validações de email, nome, sobrenome e senha
 exports.validateUser = [
-    // Validações de email, nome, sobrenome e senha
     body('email')
         .notEmpty().withMessage('Insira seu email')
         .isEmail().withMessage('O e-mail deve ser válido')
@@ -69,6 +70,39 @@ exports.register = async (req, res) => {
     }
 };
 
+// Realizar o login
 exports.login = async (req, res) => {
-    
+    const { email, password } = req.body;
+
+    const SQL = 'SELECT * FROM user WHERE email = ?'
+
+    try {
+        // Validar o email
+        const [result] = await db.query(SQL, [email])
+
+        if(result.length === 0) {
+            return res.status(400).json({ msg: 'E-mail ou senha incorretos' });
+        }
+
+        // Validar a senha
+        const validPassword = await bcrypt.compare(password, result[0].password);
+
+        if (!validPassword) {
+            return res.status(400).json({ msg: 'E-mail ou senha incorretos' });
+        }
+       
+        // Gerar token
+        const userID = result[0].id;
+
+        const token = jwt.sign({ id: userID }, "casa-do-microondas", { expiresIn: '1m' });
+
+        // Confirmar
+        res.cookie('token', token)
+
+        return res.status(200).json({ msg: 'Login realizado com sucesso!' });
+    }
+    catch (error) {
+        console.log(error)
+        return res.status(400).json({ msg: 'Ocorreu um erro ao tentar realizar o login. Tente novamente!' });
+    }
 }

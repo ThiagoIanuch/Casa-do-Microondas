@@ -1,6 +1,6 @@
-import Menu from '../components/menu.jsx';
 import Footer from '../components/footer.jsx';
 import { useEffect } from 'react';
+import NotFoundImg from '../../public/not-found.png';
 
 function NotFound() {
     // Alterar o nome da página
@@ -8,16 +8,10 @@ function NotFound() {
         document.title = "Erro 404 - Casa do Microondas";
     }, []);
     return (
-        <>
-            <Menu></Menu>
-
-                <div className="error-container">
-                    <h1>Página não encontrada!</h1>
-                    <a href="/"><img src="not-found.png" className='error'></img></a>
-                </div>
-
-            <Footer></Footer>
-        </>
+        <div className="error-container">
+            <h1>Página não encontrada!</h1>
+            <a href="/"><img src={NotFoundImg} className='error'></img></a>
+        </div>
     )
 }
 

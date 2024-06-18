@@ -7,4 +7,6 @@ router.post('/register', userControllers.validateUser, userControllers.register)
 
 router.post('/login', userControllers.login)
 
+router.get('/get', userControllers.validateToken, userControllers.get)
+
 module.exports = router;

@@ -1,4 +1,3 @@
-import Menu from '../components/menu.jsx';
 import Footer from '../components/footer.jsx';
 import { useEffect } from 'react';
 
@@ -9,16 +8,10 @@ function Construction() {
     }, []);
 
     return (
-        <>
-            <Menu></Menu>
-
-                <div className="error-container">
-                    <h1>Em construção!</h1>
-                    <a href="/"><img src="construction.png" className='error'></img></a>
-                </div>
-
-            <Footer></Footer>
-        </>
+        <div className="error-container">
+            <h1>Em construção!</h1>
+            <a href="/"><img src="construction.png" className='error'></img></a>
+        </div>
     )
 }
 

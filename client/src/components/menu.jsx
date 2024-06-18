@@ -2,8 +2,9 @@ import styles from '../css/menu.module.css';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import SiteLogo from '../../public/logo.png'
 
-function Menu() {
+function Menu({ user }) {
     /* Alterar a cor do menu de acordo com o scroll*/
     const [color, setColor] = useState(false);
     const location = useLocation();
@@ -44,7 +45,7 @@ function Menu() {
         <header className={color ? styles['header-container'] : `${styles['header-container']} ${styles['bg-hero']}`}>
             <div className={styles['header-content']}>
                 <div className={color ? styles['logo'] : `${styles['logo']} ${styles['filter-hero']}`}>
-                    <a href="/"><img src="logo.png" alt="Logo"></img></a>
+                    <a href="/"><img src={SiteLogo} alt="Logo"></img></a>
                 </div>
 
                 <div className={styles['menu-open-container']}>
@@ -82,10 +83,26 @@ function Menu() {
                 </div>*/}
             </nav>
 
-            <div className={styles['login-container']}>
-                <a href="/login" className={color ? styles['login-link'] : `${styles['login-link']} ${styles['color-hero']}`}>Entrar</a>
-                <a href="/register" className={color ? `${styles['login-link']} ${styles['register']}` : `${styles['login-link']} ${styles['color-hero']} ${styles['register']}`}>Registrar</a>
-            </div>
+            {user ? (
+                <div className={`${styles['login-container']} ${styles['user-links-container']}`}>
+                    <div className={color ? styles['user-links-container'] : `${styles['user-links-container']} ${styles['bg-hero']}`}>
+                        <p className={color ? styles['user-login-name'] : `${styles['user-login-name']} ${styles['username-hero']}`}>{user.first_name + ' ' + user.last_name}  <Icon icon="ic:round-arrow-drop-down" className={styles['user-arrow-icon']} /></p>
+
+                        <ul className={styles['user-links']}>
+                            { user && user.admin === 1 && (
+                                    <li><a href="/admin-panel/home">Área do administrador</a></li>
+                                )
+                            }
+                            <li>Sair</li>
+                        </ul>
+                    </div>
+                </div>
+            ) : (
+                <div className={styles['login-container']}>
+                    <a href="/login" className={color ? styles['login-link'] : `${styles['login-link']} ${styles['color-hero']}`}>Entrar</a>
+                    <a href="/register" className={color ? `${styles['login-link']} ${styles['register']}` : `${styles['login-link']} ${styles['color-hero']} ${styles['register']}`}>Registrar</a>
+                </div>
+            )}
         </header>
     );
 }

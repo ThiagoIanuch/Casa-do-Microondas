@@ -1,4 +1,3 @@
-import Menu from '../components/menu';
 import Footer from '../components/footer';
 import styles from '../css/forms.module.css';
 import { useState, useEffect } from 'react';
@@ -56,33 +55,27 @@ function Contact() {
         );
     }
     return (
-        <>
-            <Menu />
+        <div className={styles['page-content']}>
+            <div className={`${styles['form-container']} ${styles['contact']}`}>
+                <div className={styles['form-title']}>Contato</div>
 
-            <div className={styles['page-content']}>
-                <div className={`${styles['form-container']} ${styles['contact']}`}>
-                    <div className={styles['form-title']}>Contato</div>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" className={styles['form-input']} name="name" autoComplete="name" placeholder="Nome" value={data.name} onChange={handleChange}></input>
+                    {renderErrorMessages('name')}
 
-                    <form onSubmit={handleSubmit}>
-                        <input type="text" className={styles['form-input']} name="name" autoComplete="name" placeholder="Nome" value={data.name} onChange={handleChange}></input>
-                        {renderErrorMessages('name')}
+                    <input type="text" className={styles['form-input']} name="email" autoComplete="email" placeholder="E-mail" value={data.email} onChange={handleChange}></input>
+                    {renderErrorMessages('email')}
 
-                        <input type="text" className={styles['form-input']} name="email" autoComplete="email" placeholder="E-mail" value={data.email} onChange={handleChange}></input>
-                        {renderErrorMessages('email')}
+                    <input type="text" className={styles['form-input']} name="subject" placeholder="Assunto" value={data.subject} onChange={handleChange}></input>
+                    {renderErrorMessages('subject')}
 
-                        <input type="text" className={styles['form-input']} name="subject" placeholder="Assunto" value={data.subject} onChange={handleChange}></input>
-                        {renderErrorMessages('subject')}
+                    <textarea className={styles['form-text']} name="message" rows="2" cols="20" placeholder="Mensagem" value={data.message} onChange={handleChange}></textarea>
+                    {renderErrorMessages('message')}
 
-                        <textarea className={styles['form-text']} name="message" rows="2" cols="20" placeholder="Mensagem" value={data.message} onChange={handleChange}></textarea>
-                        {renderErrorMessages('message')}
-
-                        <input type="submit" className={styles['submit-btn']} value="Enviar"></input>
-                    </form>
-                </div>
+                    <input type="submit" className={styles['submit-btn']} value="Enviar"></input>
+                </form>
             </div>
-            
-            <Footer />
-        </>
+        </div>
     );
 }
 

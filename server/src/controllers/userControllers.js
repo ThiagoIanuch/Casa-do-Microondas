@@ -1,7 +1,8 @@
 const db = require('../database.js');
 const bcrypt = require('bcrypt');
-const { body, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
+const jwtSecret = process.env.JWT_SECRET;
+const { body, validationResult } = require('express-validator');
 
 // Validações de email, nome, sobrenome e senha
 exports.validateUser = [
@@ -94,7 +95,7 @@ exports.login = async (req, res) => {
         // Gerar token
         const userID = result[0].id;
 
-        const token = jwt.sign({ id: userID }, "casa-do-microondas", { expiresIn: '1m' });
+        const token = jwt.sign({ id: userID }, jwtSecret, { expiresIn: '300s' });
 
         // Confirmar
         res.cookie('token', token)
@@ -104,5 +105,40 @@ exports.login = async (req, res) => {
     catch (error) {
         console.log(error)
         return res.status(400).json({ msg: 'Ocorreu um erro ao tentar realizar o login. Tente novamente!' });
+    }
+}
+
+// Validar o token
+exports.validateToken = function(req, res, next) {
+    const token = req.cookies.token;
+
+    if(!token) {
+        return res.status(400).json({ msg: 'Nenhum token encontrado' });
+    }
+
+    jwt.verify(token, jwtSecret, (error, decoded) => {
+        if(error) {
+            return res.status(400).json({ msg: 'O token não é válido' });
+        }
+
+        req.id = decoded.id;
+
+        next();
+    })
+}
+
+// Pegar os dados do usuario
+exports.get = async (req, res) => {
+    const id = req.id;
+
+    const SQL = 'SELECT id, first_name, last_name, admin FROM user WHERE id = ?'
+
+    try {
+        const [result] = await db.query(SQL, id);
+
+        return res.status(200).json(result[0]);
+    }
+    catch {
+        return res.status(400).json({ msg: 'Ocorreu um erro ao obter os dados do usuário' });
     }
 }

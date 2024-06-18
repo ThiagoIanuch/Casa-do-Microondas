@@ -1,6 +1,7 @@
 // Importar as bibliotecas
 const express = require('express');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 // Importar as rotas
 const userRoutes = require('./routes/userRoutes.js');
@@ -22,6 +23,7 @@ const app = express();
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.static('public'));
+app.use(cookieParser());
 
 app.use('/api/user', userRoutes);
 app.use('/api/product', productRoutes);

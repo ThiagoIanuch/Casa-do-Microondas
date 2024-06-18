@@ -1,9 +1,8 @@
-import Menu from '../components/menu.jsx'
 import Footer from '../components/footer.jsx'
 import styles from '../css/forms.module.css'
 import { useEffect, useState } from 'react';
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 function Login() {
     // Alterar o nome da página
@@ -31,7 +30,7 @@ function Login() {
             await axios.post('http://localhost:8080/api/user/login', data, {
                 withCredentials: true
             });
-            navigate('/');
+            window.location.href = '/';
         }
         catch (error) {
             setErrorMessage(error.response.data.msg);
@@ -42,31 +41,25 @@ function Login() {
     const [errorMessage, setErrorMessage] = useState('');
 
     return (
-        <>
-            <Menu></Menu>
+        <div className={styles['page-content']}>
+            <div className={styles['form-container']}>
+                <div className={styles['form-title']}>Entrar</div>
 
-            <div className={styles['page-content']}>
-                <div className={styles['form-container']}>
-                    <div className={styles['form-title']}>Entrar</div>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" className={styles['form-input']} name="email" autoComplete="email" placeholder="E-mail" onChange={handleChange}></input>
 
-                    <form onSubmit={handleSubmit}>
-                        <input type="text" className={styles['form-input']} name="email" autoComplete="email" placeholder="E-mail" onChange={handleChange}></input>
+                    <input type="password" className={styles['form-input']} name="password" autoComplete="password" placeholder="Senha" onChange={handleChange}></input>
+                    
+                    {errorMessage && (
+                        <div className={styles['error-messages']}>
+                            <span>{'* ' + errorMessage}</span>
+                        </div>
+                    )}
 
-                        <input type="password" className={styles['form-input']} name="password" autoComplete="password" placeholder="Senha" onChange={handleChange}></input>
-                        
-                        {errorMessage && (
-                            <div className={styles['error-messages']}>
-                                <span>{'* ' + errorMessage}</span>
-                            </div>
-                        )}
-
-                        <input type="submit" className={styles['submit-btn']} value="Entrar"></input>
-                    </form>
-                </div>
+                    <input type="submit" className={styles['submit-btn']} value="Entrar"></input>
+                </form>
             </div>
-
-            <Footer></Footer>
-        </>
+        </div>
     )
 }
 

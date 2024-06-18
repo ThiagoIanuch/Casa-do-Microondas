@@ -1,5 +1,3 @@
-import Menu from "../components/menu";
-import Footer from "../components/footer";
 import styles from '../css/forms.module.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios'
@@ -75,41 +73,35 @@ function ServiceOrder() {
     }
 
     return (
-        <>
-            <Menu></Menu>
+        <div className={styles['page-content']}>
+            <div className={`${styles['form-container']} ${styles['service-order']}`}>
+                <div className={styles['form-title']}>Orçamento</div>
 
-            <div className={styles['page-content']}>
-                <div className={`${styles['form-container']} ${styles['service-order']}`}>
-                    <div className={styles['form-title']}>Orçamento</div>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" className={styles['form-input']} name="phone" autoComplete="tel-national" placeholder="Celular ou Telefone" value={data.phone} onChange={handleChange}></input>
+                    {renderErrorMessages('phone')}
 
-                    <form onSubmit={handleSubmit}>
-                        <input type="text" className={styles['form-input']} name="phone" autoComplete="tel-national" placeholder="Celular ou Telefone" value={data.phone} onChange={handleChange}></input>
-                        {renderErrorMessages('phone')}
+                    <input type="text" className={styles['form-input']} name="type" placeholder="Tipo de produto" value={data.type} onChange={handleChange}></input>
+                    {renderErrorMessages('type')}
 
-                        <input type="text" className={styles['form-input']} name="type" placeholder="Tipo de produto" value={data.type} onChange={handleChange}></input>
-                        {renderErrorMessages('type')}
+                    <select name="brand" className={styles['form-input']} value={data.brand} onChange={handleChange} >
+                        <option value="">Selecione uma marca</option>
+                        {brands.map(brand => (
+                            <option key={brand.id} value={brand.id}>{brand.name}</option>
+                        ))}
+                    </select>
+                    {renderErrorMessages('brand')}
 
-                        <select name="brand" className={styles['form-input']} value={data.brand} onChange={handleChange} >
-                            <option value="">Selecione uma marca</option>
-                            {brands.map(brand => (
-                                <option key={brand.id} value={brand.id}>{brand.name}</option>
-                            ))}
-                        </select>
-                        {renderErrorMessages('brand')}
+                    <input type="text" className={styles['form-input']} name="model" placeholder="Modelo do produto" value={data.model} onChange={handleChange}></input>
+                    {renderErrorMessages('model')}
 
-                        <input type="text" className={styles['form-input']} name="model" placeholder="Modelo do produto" value={data.model} onChange={handleChange}></input>
-                        {renderErrorMessages('model')}
+                    <textarea className={styles['form-text']} name="description" rows="2" cols="20" placeholder="Descrição do problema" value={data.description} onChange={handleChange}></textarea>
+                    {renderErrorMessages('description')}
 
-                        <textarea className={styles['form-text']} name="description" rows="2" cols="20" placeholder="Descrição do problema" value={data.description} onChange={handleChange}></textarea>
-                        {renderErrorMessages('description')}
-
-                        <input type="submit" className={styles['submit-btn']} value="Enviar"></input>
-                    </form>
-                </div>
+                    <input type="submit" className={styles['submit-btn']} value="Enviar"></input>
+                </form>
             </div>
-
-            <Footer></Footer>
-        </>
+        </div>
     )
 }
 

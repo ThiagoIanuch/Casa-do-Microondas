@@ -1,6 +1,5 @@
-import Footer from '../components/footer.jsx';
 import { useEffect } from 'react';
-import NotFoundImg from '../../public/not-found.png';
+import NotFoundImg from '/not-found.png';
 
 function NotFound() {
     // Alterar o nome da página

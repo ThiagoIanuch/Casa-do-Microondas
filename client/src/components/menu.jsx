@@ -2,7 +2,9 @@ import styles from '../css/menu.module.css';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import SiteLogo from '../../public/logo.png'
+import SiteLogo from '/logo.png'
+import axios from 'axios'
+import Cookies from 'js-cookie';
 
 function Menu({ user }) {
     /* Alterar a cor do menu de acordo com o scroll*/
@@ -29,6 +31,7 @@ function Menu({ user }) {
         };
     }, [location.pathname]);
 
+
     const toggleMenu = () => {
         const navContainer = document.querySelector(`.${styles['nav-container']}`);
         const loginContainer = document.querySelector(`.${styles['login-container']}`);
@@ -40,6 +43,17 @@ function Menu({ user }) {
             loginContainer.style.display = 'flex';
         }
     };
+
+    // Função para deslogar o usuário
+    const handleLogout = async (req, res) => {
+        try {
+            Cookies.remove('token')
+            window.location.href = '/';
+        }
+        catch(error) {
+            console.log(error);
+        }
+    }
 
     return (
         <header className={color ? styles['header-container'] : `${styles['header-container']} ${styles['bg-hero']}`}>
@@ -93,7 +107,7 @@ function Menu({ user }) {
                                     <li><a href="/admin-panel/home">Área do administrador</a></li>
                                 )
                             }
-                            <li>Sair</li>
+                            <li onClick={handleLogout}>Sair</li>
                         </ul>
                     </div>
                 </div>

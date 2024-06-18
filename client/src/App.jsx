@@ -35,7 +35,7 @@ function App() {
     if(token) {
       try {
         const response = await axios.get('http://localhost:8080/api/user/get', {
-        withCredentials: true 
+          withCredentials: true 
         });        
         setUser(response.data);
       } catch (error) {

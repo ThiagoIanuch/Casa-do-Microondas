@@ -77,3 +77,24 @@
 .contact, .service-order {
     max-width: 450px;
 }
+
+.not-user-error {
+    color: var(--color-font);
+    margin-top: 30px;
+    font-family: "Inter", sans-serif;
+    letter-spacing: 1.2px;
+}
+
+.not-user-error p {
+    margin-top: 20px;
+}
+
+.not-user-error a {
+    color: var(--color-font);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.not-user-error a:hover {
+    text-decoration: underline;
+}

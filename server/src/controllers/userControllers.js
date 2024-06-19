@@ -11,12 +11,12 @@ exports.validateUser = [
         .isEmail().withMessage('O e-mail deve ser válido')
         .isLength({ max: 255 }).withMessage('O e-mail deve conter no máximo 255 caracteres')
         .custom(async (email) => {
-            const SQL = 'SELECT email FROM user WHERE email = ?';
+            const SQL = 'CALL VerifyEmail(?)';
 
             try {
                 const [result] = await db.query(SQL, [email]);
 
-                if (result.length > 0) {
+                if (result[0].length > 0) {
                     return Promise.reject('Este e-mail já está cadastrado no sistema');
                 }
             } catch (error) {
@@ -56,7 +56,7 @@ exports.register = async (req, res) => {
     }
 
     // Cadastra o usuário
-    const SQL = 'INSERT INTO user (email, first_name, last_name, password) VALUES (?, ?, ?, ?)';
+    const SQL = 'CALL RegisterUser(?, ?, ?, ?)';
 
     const { email, firstName, lastName, password } = req.body;
 
@@ -75,25 +75,25 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
     const { email, password } = req.body;
 
-    const SQL = 'SELECT * FROM user WHERE email = ?'
+    const SQL = 'CALL LoginUser(?)'
 
     try {
         // Validar o email
         const [result] = await db.query(SQL, [email])
 
-        if(result.length === 0) {
+        if(result[0].length === 0) {
             return res.status(400).json({ msg: 'E-mail ou senha incorretos' });
         }
 
         // Validar a senha
-        const validPassword = await bcrypt.compare(password, result[0].password);
+        const validPassword = await bcrypt.compare(password, result[0][0].password);
 
         if (!validPassword) {
             return res.status(400).json({ msg: 'E-mail ou senha incorretos' });
         }
        
         // Gerar token
-        const userID = result[0].id;
+        const userID = result[0][0].id;
 
         const token = jwt.sign({ id: userID }, jwtSecret, { expiresIn: '300s' });
 
@@ -131,14 +131,14 @@ exports.validateToken = function(req, res, next) {
 exports.get = async (req, res) => {
     const id = req.id;
 
-    const SQL = 'SELECT id, first_name, last_name, admin FROM user WHERE id = ?'
+    const SQL = 'CALL GetUser(?)'
 
     try {
         const [result] = await db.query(SQL, id);
 
-        return res.status(200).json(result[0]);
+        return res.status(200).json(result[0][0]);
     }
-    catch {
+    catch{
         return res.status(400).json({ msg: 'Ocorreu um erro ao obter os dados do usuário' });
     }
 }

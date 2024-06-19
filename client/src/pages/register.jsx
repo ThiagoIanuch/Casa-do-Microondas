@@ -44,6 +44,7 @@ function Register() {
             const response = await axios.post('http://localhost:8080/api/user/register', userData)
             setErrorMessages([]);
             alert('Registrado com sucesso, faça seu login')
+            window.location.href = '/login';
             setUserData({
                 email: '',
                 firstName: '',

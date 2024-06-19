@@ -44,10 +44,10 @@ exports.send = async (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
+    const userID = req.params.id;
+
     const {phone, type, brand, model, description} = req.body;
     
-    const userID = 1;
-
     const SQL = 'CALL SendServiceOrder(?, ?, ?, ?, ?, ?)';
     try {
         await db.query(SQL, [userID, phone, type, brand, model, description]);

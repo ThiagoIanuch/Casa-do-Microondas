@@ -327,3 +327,52 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+DELIMITER //
+
+-- --------------------------------------------------------
+--
+-- Procedimentos para a tabela de `user`
+--
+DELIMITER //
+
+CREATE PROCEDURE VerifyEmail(IN p_email VARCHAR(255))
+BEGIN
+    SELECT email FROM user WHERE email = p_email;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE RegisterUser(
+    IN p_email VARCHAR(255),
+    IN p_first_name VARCHAR(50),
+    IN p_last_name VARCHAR(100),
+    IN p_password VARCHAR(60)
+)
+BEGIN
+    INSERT INTO user (email, first_name, last_name, password)
+    VALUES (p_email, p_first_name, p_last_name, p_password);
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE LoginUser(IN userEmail VARCHAR(255))
+BEGIN
+    SELECT * FROM user WHERE email = userEmail;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE GetUser(IN userId INT)
+BEGIN
+    SELECT id, first_name, last_name, admin FROM user WHERE id = userId;
+END //
+
+DELIMITER ;

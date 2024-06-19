@@ -36,7 +36,7 @@ function App() {
       try {
         const response = await axios.get('http://localhost:8080/api/user/get', {
           withCredentials: true 
-        });        
+        });          
         setUser(response.data);
       } catch (error) {
         console.log('Erro ao validar o token:', error);
@@ -67,7 +67,7 @@ function App() {
           {!user && <Route path="/login" element={<Login />} />}
           <Route path="/construction" element={<Construction/>}></Route>
           <Route path="/location" element={<Location/>}></Route>
-          <Route path="/service-order" element={<ServiceOrder/>}></Route>
+          <Route path="/service-order" element={<ServiceOrder user={user} />} />
           <Route path="/contact" element={<Contact/>}></Route>
           <Route path="*" element={<NotFound/>} />
           {user && user.admin === 1 && (

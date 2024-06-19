@@ -95,7 +95,7 @@ exports.login = async (req, res) => {
         // Gerar token
         const userID = result[0][0].id;
 
-        const token = jwt.sign({ id: userID }, jwtSecret, { expiresIn: '300s' });
+        const token = jwt.sign({ id: userID }, jwtSecret, { expiresIn: '1h' });
 
         // Confirmar
         res.cookie('token', token)
@@ -123,6 +123,19 @@ exports.validateToken = function(req, res, next) {
 
         req.id = decoded.id;
 
+        // Criar refresh para o token
+        // Pega o horario atual em segundos e diminui pelo tempo de expiração do token e verifica qnt tempo falta, o Math.Floor é somente para interar o tempo
+        const currentTime = Math.floor(Date.now() / 1000); 
+        const expirationTime = decoded.exp;
+        const refreshThreshold = 900;
+
+        if (expirationTime - currentTime < refreshThreshold) {
+
+            const newToken = jwt.sign({ id: decoded.id }, jwtSecret, { expiresIn: '1hr' });
+            
+            res.cookie('token', newToken,);
+        }
+                
         next();
     })
 }

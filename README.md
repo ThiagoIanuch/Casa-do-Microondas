@@ -10,7 +10,7 @@ Casa do Microondas é um projeto de um site para uma assistência de microondas,
 
 ## Pré-requisitos
 
-- Ultima versão do Node JS
+- Ultima versão do Node.js
 ```
     https://nodejs.org/en/download
 ```
@@ -62,5 +62,5 @@ Casa do Microondas é um projeto de um site para uma assistência de microondas,
     localhost:8080 (servidor)
 ```
 
-## Colaboradores
+## Contribuidores
 <a href="https://github.com/ThiagoIanuch"><img src="https://github.com/ThiagoIanuch.png" width="150px"></a> <a href="https://github.com/Henrique-Barbieri"><img src="https://github.com/Henrique-Barbieri.png" width="150px"></a> <a href="https://github.com/GabrielDBarbieri"><img src="https://github.com/GabrielDBarbieri.png" width="150px"></a> <a href="https://github.com/le-leodasilva"><img src="https://github.com/le-leodasilva.png" width="150px"></a>

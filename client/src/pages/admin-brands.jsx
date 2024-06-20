@@ -83,12 +83,17 @@ function AdminBrands() {
         status: false
     });
     
+    const [previewFile, setPreviewFile] = useState(); // criado só para dar preview para as imagens
     const handleChange = (event) => {
         const { name, type, value, checked, files } = event.target;
         setBrandData({ 
             ...brandData,
             [name]: type === 'checkbox' ? checked : type === 'file' ? files[0] : value,
         });
+
+        if(type === 'file') {
+            setPreviewFile(URL.createObjectURL(event.target.files[0]));
+        }
     };
 
     // Abrir o painel modal
@@ -121,6 +126,7 @@ function AdminBrands() {
     // Gerenciar modal para editar ou para adicionar
     const editBrand = (id, name, url, image, status) => {
         setBrandData({id, name, url, image, status });
+        setPreviewFile('');
         setOpenModal(true);
     };
 
@@ -132,6 +138,7 @@ function AdminBrands() {
             image: '',
             status: false
         });
+        setPreviewFile('');
         setOpenModal(true);
     };
 
@@ -159,7 +166,13 @@ function AdminBrands() {
                             <p>Arraste ou clique aqui para enviar sua imagem</p>
                         </div>
                         <div className="file-container-preview">
-                            <img src={`http://localhost:8080/brands-img/${brandData.image}`} alt="Imagem marca" className="modal-img brand-img"/>
+                        { previewFile ? (
+                            <img src={previewFile} alt="Prévia do ícone do serviço" className="modal-img" />
+                        ) : (
+                            brandData.image && (
+                                <img src={`http://localhost:8080/brands-img/${brandData.image}`} alt="Imagem marca" className="modal-img brand-img"/>
+                            )
+                        )}
                         </div>
                     </div>
                     

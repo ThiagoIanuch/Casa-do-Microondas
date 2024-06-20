@@ -9,4 +9,6 @@ router.post('/login', userControllers.login)
 
 router.get('/get', userControllers.validateToken, userControllers.get)
 
+router.post('/logout', userControllers.logout)
+
 module.exports = router;

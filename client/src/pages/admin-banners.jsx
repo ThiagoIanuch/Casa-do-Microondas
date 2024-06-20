@@ -79,12 +79,17 @@ function AdminBanners() {
         status: false
     });
     
+    const [previewFile, setPreviewFile] = useState(); // criado só para dar preview para as imagens
     const handleChange = (event) => {
         const { name, type, value, checked, files } = event.target;
         setBannerData({ 
             ...bannerData,
             [name]: type === 'checkbox' ? checked : type === 'file' ? files[0] : value,
         });
+
+        if(type === 'file') {
+            setPreviewFile(URL.createObjectURL(event.target.files[0]));
+        }
     };
 
     // Abrir o painel modal
@@ -116,6 +121,7 @@ function AdminBanners() {
     // Gerenciar modal para editar ou para adicionar
     const editBanner = (id, image, description, status) => {
         setBannerData({id, image, description, status });
+        setPreviewFile('');
         setOpenModal(true);
     };
 
@@ -126,6 +132,7 @@ function AdminBanners() {
             description: '',
             status: false
         });
+        setPreviewFile('');
         setOpenModal(true);
     };
       
@@ -147,7 +154,13 @@ function AdminBanners() {
                             <p>Arraste ou clique aqui para enviar sua imagem</p>
                         </div>
                         <div className="file-container-preview">
-                            <img src={`http://localhost:8080/announcements-img/${bannerData.image}`} alt="Imagem banner" className="modal-img brand-img"/>
+                            { previewFile ? (
+                                <img src={previewFile} alt="Prévia do ícone do serviço" className="modal-img" />
+                            ) : (
+                            bannerData.image && (
+                                <img src={`http://localhost:8080/announcements-img/${bannerData.image}`} alt="Imagem banner" className="modal-img brand-img"/>
+                            )
+                        )}
                         </div>
                     </div>
 

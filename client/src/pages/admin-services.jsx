@@ -83,12 +83,17 @@ function AdminServices() {
         status: false
     });
 
+    const [previewFile, setPreviewFile] = useState(); // criado só para dar preview para as imagens
     const handleChange = (event) => {
         const { name, type, value, checked, files } = event.target;
         setServiceData({ 
             ...serviceData,
             [name]: type === 'checkbox' ? checked : type === 'file' ? files[0] : value,
         });
+
+        if(type === 'file') {
+            setPreviewFile(URL.createObjectURL(event.target.files[0]));
+        }
     };
 
     // Abrir o painel modal
@@ -121,6 +126,7 @@ function AdminServices() {
     // Gerenciar modal para editar ou para adicionar
     const editService = (id, icon, title, description, status) => {
         setServiceData({id, icon, title, description, status });
+        setPreviewFile('');
         setOpenModal(true);
     };
 
@@ -132,6 +138,7 @@ function AdminServices() {
             description: '',
             status: false
         });
+        setPreviewFile('');
         setOpenModal(true);
     };
 
@@ -153,7 +160,13 @@ function AdminServices() {
                             <p>Arraste ou clique aqui para enviar seu icone</p>
                         </div>
                         <div className="file-container-preview">
-                            <img src={`http://localhost:8080/services-img/${serviceData.icon}`} alt="Imagem produto" className="modal-img"/>
+                        { previewFile ? (
+                            <img src={previewFile} alt="Prévia do ícone do serviço" className="modal-img" />
+                        ) : (
+                            serviceData.icon && (
+                                <img src={`http://localhost:8080/services-img/${serviceData.icon}`} alt="Imagem do serviço" className="modal-img" />
+                            )
+                        )}
                         </div>
                     </div>
 

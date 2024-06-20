@@ -45,9 +45,14 @@ function Menu({ user }) {
     };
 
     // Função para deslogar o usuário
-    const handleLogout = async (req, res) => {
+    const handleLogout = async () => {
         try {
+            await axios.post('http://localhost:8080/api/user/logout', {}, {
+                withCredentials: true
+            }); 
+
             Cookies.remove('token')
+            
             window.location.href = '/';
         }
         catch(error) {

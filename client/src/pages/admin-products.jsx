@@ -84,8 +84,10 @@ function AdminProducts() {
         price: ''
     });
     
+    const [previewFile, setPreviewFile] = useState(); // criado só para dar preview para as imagens
     const handleChange = (event) => {
         if (event.target.name === 'image') {
+            setPreviewFile(URL.createObjectURL(event.target.files[0]));
             setProductData({ ...productData, image: event.target.files[0] });
         } else {
             setProductData({ ...productData, [event.target.name]: event.target.value });
@@ -122,6 +124,7 @@ function AdminProducts() {
     // Gerenciar modal para editar ou para adicionar
     const editProduct = (id, type, description, image, price) => {
         setProductData({id, type, description, image, price });
+        setPreviewFile('');
         setOpenModal(true);
     };
 
@@ -133,6 +136,7 @@ function AdminProducts() {
             image: '',
             price: ''
         });
+        setPreviewFile('');
         setOpenModal(true);
     };
 
@@ -160,7 +164,13 @@ function AdminProducts() {
                             <p>Arraste ou clique aqui para enviar sua imagem</p>
                         </div>
                         <div className="file-container-preview">
-                            <img src={`http://localhost:8080/products-img/${productData.image}`} alt="Imagem produto" className="modal-img"/>
+                            { previewFile ? (
+                                <img src={previewFile} alt="Prévia do ícone do serviço" className="modal-img" />
+                            ) : (
+                                productData.image && (
+                                <img src={`http://localhost:8080/products-img/${productData.image}`} alt="Imagem produto" className="modal-img"/>
+                                )
+                            )}
                         </div>
                     </div>
                     

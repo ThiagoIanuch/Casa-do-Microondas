@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const jwtSecret = process.env.JWT_SECRET;
 const { body, validationResult } = require('express-validator');
+const blacklist = new Set(); // utiliza new set q é um objeto, pq com array não adicionava corretamente os tokens pra invalidar qnd o usuário desloga
 
 // Validações de email, nome, sobrenome e senha
 exports.validateUser = [
@@ -116,6 +117,10 @@ exports.validateToken = function(req, res, next) {
         return res.status(400).json({ msg: 'Nenhum token encontrado' });
     }
 
+    if(blacklist.has(token)) {
+        return res.status(400).json({ msg: 'O token foi revogado' });
+    }
+
     jwt.verify(token, jwtSecret, (error, decoded) => {
         if(error) {
             return res.status(400).json({ msg: 'O token não é válido' });
@@ -131,11 +136,12 @@ exports.validateToken = function(req, res, next) {
 
         if (expirationTime - currentTime < refreshThreshold) {
 
-            const newToken = jwt.sign({ id: decoded.id }, jwtSecret, { expiresIn: '1hr' });
+            const newToken = jwt.sign({ id: decoded.id }, jwtSecret, { expiresIn: '1h' });
             
             res.cookie('token', newToken,);
         }
-                
+
+        // Chamar a prox função pra pegar os dados do usuário        
         next();
     })
 }
@@ -155,3 +161,13 @@ exports.get = async (req, res) => {
         return res.status(400).json({ msg: 'Ocorreu um erro ao obter os dados do usuário' });
     }
 }
+
+// Deslogar
+exports.logout = function(req, res) {
+    // add o token no array de blacklist
+    const token = req.cookies.token;
+
+    blacklist.add(token);
+
+    return res.status(200).json({ msg: 'Deslogado com sucesso' });
+};

@@ -71,7 +71,7 @@ function App() {
           <Route path="/contact" element={<Contact/>}></Route>
           <Route path="*" element={<NotFound/>} />
           {user && user.admin === 1 && (
-            <Route path="/admin-panel/*" element={<AdminPanel/>}>
+            <Route path="/admin-panel/*" element={<AdminPanel user={user}/>}>
               <Route index element={<Navigate to="home" />} />
               <Route path="home" element={<AdminHome/>} />
               <Route path="banners" element={<AdminBanners/>} />

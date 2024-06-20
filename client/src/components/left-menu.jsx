@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 
-function LeftMenu() {
+function LeftMenu({ user }) {
     return (
         <div className="left-menu">
             <div className="logo">
@@ -9,6 +9,7 @@ function LeftMenu() {
             </div>
 
             <ul className="itens-container">
+                <li className="item item-user">{'@' + user.first_name + ' ' + user.last_name}</li> 
                 <li className="item">
                     <Link to="/admin-panel" className="item-link">
                         <Icon icon="mynaui:home" className="icon-size" />

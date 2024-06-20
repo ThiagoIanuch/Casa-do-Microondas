@@ -282,3 +282,7 @@ a {
 .brand-img {
     object-fit: contain!important;
 }
+
+.item-user:hover {
+    background-color: unset!important;
+}

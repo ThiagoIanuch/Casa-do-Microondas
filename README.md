@@ -1,16 +1,18 @@
-## Sobre o Projeto
+# Sobre o Projeto
 
 Casa do Microondas é um projeto de um site para uma assistência de microondas, que será apresentado na disciplina de Desenvolvimento Web e Banco de Dados
 
-<img src="https://i.imgur.com/j7mBnyG.png">
+<img src="https://i.imgur.com/4t7H77S.png">
 
-### Construido com
+## Construido com
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
 
 ## Pré-requisitos
 
-- Ultima versão do Node.js
+- IDE (recomendado o Visual Studio Code)
+- Ferramenta para gerenciamento de banco de dados (recomendado o MySQL Workbench)
+- Ultima versão do Node.js:
 ```
     https://nodejs.org/en/download
 ```
@@ -33,7 +35,7 @@ Casa do Microondas é um projeto de um site para uma assistência de microondas,
     cd server
     npm install
 ```
-3. Crie um servidor MySQL importando os arquivos SQL na ordem (create, inserts e procedures) da pasta server/src/models
+3. No Workbench ou na ferramenta que está usando para gerenciar o banco de dados importe os scripts SQL que estão na pasta server/src/models (create.sql, insert.sql e procedures.sql)
 
 4. Crie um arquivo .env na pasta server com as informações do banco de dados criado em sua máquina e com um segredo para o token JWT, exemplo:
 ```
@@ -61,6 +63,10 @@ Casa do Microondas é um projeto de um site para uma assistência de microondas,
     localhost:5173 (cliente)
     localhost:8080 (servidor)
 ```
+- O banco de dados possui por padrão duas contas já cadastradas para realizar testes, uma de cliente e outra com permissão de administrador:
+    - email: `clienteteste@gmail.com` | senha: clienteteste 
+    - email: `admin@casamicroondas.com` | senha: cmoadmin*
+
 
 ## Contribuidores
 <a href="https://github.com/ThiagoIanuch"><img src="https://github.com/ThiagoIanuch.png" width="150px"></a> <a href="https://github.com/Henrique-Barbieri"><img src="https://github.com/Henrique-Barbieri.png" width="150px"></a> <a href="https://github.com/GabrielDBarbieri"><img src="https://github.com/GabrielDBarbieri.png" width="150px"></a> <a href="https://github.com/le-leodasilva"><img src="https://github.com/le-leodasilva.png" width="150px"></a>

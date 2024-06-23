@@ -11,7 +11,7 @@ Casa do Microondas é um projeto de um site para uma assistência de microondas,
 ## Pré-requisitos
 
 - IDE (recomendado o Visual Studio Code)
-- Ferramenta para gerenciamento de banco de dados (recomendado o MySQL Workbench)
+- Ferramenta para gerenciamento de banco de dados MySQL (recomendado o MySQL Workbench)
 - Ultima versão do Node.js:
 ```
     https://nodejs.org/en/download
@@ -35,7 +35,7 @@ Casa do Microondas é um projeto de um site para uma assistência de microondas,
     cd server
     npm install
 ```
-3. No Workbench ou na ferramenta que está usando para gerenciar o banco de dados importe os scripts SQL que estão na pasta server/src/models (create.sql, insert.sql e procedures.sql)
+3. No Workbench ou na ferramenta que está usando para gerenciar o banco de dados MySQL importe os scripts SQL que estão na pasta server/src/models (create.sql, insert.sql e procedures.sql)
 
 4. Crie um arquivo .env na pasta server com as informações do banco de dados criado em sua máquina e com um segredo para o token JWT, exemplo:
 ```

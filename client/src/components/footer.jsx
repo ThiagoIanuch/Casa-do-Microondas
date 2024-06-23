@@ -69,7 +69,7 @@ function Footer() {
                             <p>A avaliação na hora é feita até às 16h.</p>
                         </li>
                         <li className={styles['contact-link-container']}>
-                            <a href="/contact" className={`${styles['footer-link']} ${styles['contact-link']}`}>
+                            <a href="/service-order" className={`${styles['footer-link']} ${styles['contact-link']}`}>
                                 Abra sua pré-os
                             </a>
                         </li>

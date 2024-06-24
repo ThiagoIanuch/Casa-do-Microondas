@@ -1,6 +1,6 @@
 # Sobre o Projeto
 
-Casa do Microondas é um projeto de um site para uma assistência de microondas, desenvolvido para a disciplina de Desenvolvimento Web e Banco de Dados, no 3º período de Ciência da Computação na Uniandrade
+Casa do Microondas é um projeto de um site para uma assistência de microondas, desenvolvido em grupo para a disciplina de Desenvolvimento Web e Banco de Dados, no 3º período de Ciência da Computação na Uniandrade
 
 <img src="https://i.imgur.com/4t7H77S.png">
 
